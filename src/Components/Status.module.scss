@@ -1,0 +1,30 @@
+@use "./Button.module";
+
+.status {
+    @include Button.button;
+
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    &.good {
+        border-color: green;
+    }
+
+    .good {
+        color: green;
+        font-size: 20px;
+    }
+
+    &.crashed {
+        border-color: red;
+    }
+
+    .crashed {
+        color: red;
+        font-size: 20px;
+    }
+}

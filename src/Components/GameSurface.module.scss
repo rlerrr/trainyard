@@ -1,0 +1,14 @@
+.erasing {
+    animation: oscillate-shadow 1s infinite linear;
+}
+
+@keyframes oscillate-shadow {
+    0%,
+    100% {
+        box-shadow: 0 0 5px grey;
+    }
+
+    50% {
+        box-shadow: 0 0 20px yellow;
+    }
+}

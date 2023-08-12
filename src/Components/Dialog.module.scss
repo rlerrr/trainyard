@@ -1,0 +1,75 @@
+@mixin box {
+    padding: 10px;
+    border: 1px solid gray;
+
+    border-radius: 15px;
+    background-color: #345;
+}
+
+.wrapper {
+    @include box;
+
+    position: relative;
+
+    margin: 0px auto;
+
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 600px;
+
+    gap: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    h1 {
+        font-weight: 600;
+        color: lightblue;
+        margin: 0;
+    }
+}
+
+.header {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;  
+    
+    h1 {
+        color: yellowgreen;
+    }
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 5px 0;
+
+    button {
+        min-width: 200px;
+    }
+}
+
+.footer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: stretch;
+
+    >*:first-child {
+        flex-basis: 150px;
+    }
+
+    >*:last-child {
+        flex: 1 0 200px;
+    }
+}

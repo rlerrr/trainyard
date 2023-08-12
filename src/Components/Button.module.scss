@@ -1,0 +1,46 @@
+@mixin button {
+    background-color: #222;
+    color: white;
+    font-weight: 600;
+
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #000;
+}
+
+.button {
+    @include button;
+
+    padding: 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &.green {
+        border-color: green;
+    }
+
+    &.yellow {
+        border-color: yellow;
+    }
+
+    &.red {
+        border-color: red;
+    }
+
+    &.blue {
+        border-color: cornflowerblue;
+    }
+
+    &[disabled] {
+        cursor: default;
+        color: gray;
+        border-color: gray;
+    }
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
