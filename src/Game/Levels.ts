@@ -108,6 +108,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Brampton",
+        difficulty: 6,
         puzzles: [
             {
                 name: "A Rock in the Way",
@@ -193,6 +194,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Calgary",
+        difficulty: 11,
         puzzles: [
             {
                 name: "Rainbow",
@@ -278,6 +280,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Delson",
+        difficulty: 20,
         puzzles: [
             {
                 name: "Mellow Yellow",
@@ -389,7 +392,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Edmonton",
-        difficulty: 5,
+        difficulty: 35,
         puzzles: [
             {
                 name: "Yield",
@@ -480,7 +483,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Fredericton",
-        difficulty: 32,
+        difficulty: 62,
         puzzles: [
             {
                 name: "Micro Mix",
@@ -575,7 +578,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Guelph",
-        difficulty: 41,
+        difficulty: 71,
         puzzles: [
             {
                 name: "Mirror Squad", difficulty: 3, cells: [
@@ -716,7 +719,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Halifax",
-        difficulty: 66,
+        difficulty: 96,
         puzzles: [
             {
                 name: "Handlebars",
@@ -830,7 +833,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Iqaluit",
-        difficulty: 104,
+        difficulty: 134,
         puzzles: [
             {
                 name: "Inverse",
@@ -945,7 +948,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     {
         //Start of Paint tiles
         name: "Joliette",
-        difficulty: 141,
+        difficulty: 171,
         puzzles: [
             {
                 name: "Red Pear",
@@ -1030,7 +1033,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Kamloops",
-        difficulty: 160,
+        difficulty: 190,
         puzzles: [
             {
                 name: "Podded Peas",
@@ -1155,7 +1158,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     {
         //Start of splitter tiles
         name: "London",
-        difficulty: 205,
+        difficulty: 235,
         puzzles: [
             {
                 name: "Round The Twist",
@@ -1270,7 +1273,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Mississauga",
-        difficulty: 261,
+        difficulty: 291,
         puzzles: [
             {
                 name: "Warm Up",
@@ -1386,7 +1389,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Niagara Falls",
-        difficulty: 345,
+        difficulty: 375,
         puzzles: [
             {
                 name: "Horhey",
@@ -1541,6 +1544,1684 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
                     { type: "Target", direction: "top", trains: ["Blue", "Blue", "Blue", "Blue"], row: 6, col: 6 }
                 ]
             },
+        ]
+    },
+    //Bonus puzzles
+    {
+        name: "Oakville",
+        difficulty: 425,
+        puzzles: [
+            {
+                name: "Alleyway",
+                difficulty: 6,
+                cells: [
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 0, col: 2 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 0, col: 4 },
+                    { type: "Source", direction: "bottom", trains: ["Yellow"], row: 1, col: 3 },
+                    { type: "Rock", row: 4, col: 0 },
+                    { type: "Rock", row: 4, col: 1 },
+                    { type: "Rock", row: 4, col: 2 },
+                    { type: "Rock", row: 4, col: 4 },
+                    { type: "Rock", row: 4, col: 5 },
+                    { type: "Rock", row: 4, col: 6 },
+                    { type: "Target", direction: ["right"], trains: ["Brown"], row: 5, col: 0 },
+                    { type: "Splitter", direction: "top", row: 5, col: 3 },
+                    { type: "Target", direction: ["left"], trains: ["Brown"], row: 5, col: 6 },
+                    { type: "Rock", row: 6, col: 0 },
+                    { type: "Rock", row: 6, col: 1 },
+                    { type: "Rock", row: 6, col: 2 },
+                    { type: "Rock", row: 6, col: 3 },
+                    { type: "Rock", row: 6, col: 4 },
+                    { type: "Rock", row: 6, col: 5 },
+                    { type: "Rock", row: 6, col: 6 }
+                ]
+            },
+
+            {
+                name: "Recycling Garbage",
+                difficulty: 8,
+                cells: [
+                    { type: "Source", direction: "right", trains: ["Red"], row: 0, col: 0 },
+                    { type: "Source", direction: "left", trains: ["Green"], row: 0, col: 6 },
+                    { type: "Target", direction: ["top", "left", "bottom", "right"], trains: ["Brown", "Brown", "Brown", "Brown"], row: 3, col: 3 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 6, col: 0 },
+                    { type: "Source", direction: "left", trains: ["Blue"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Axiom",
+                difficulty: 8,
+                cells: [
+                    { type: "Paint", direction: "bottom-left", color: "Blue", row: 0, col: 2 },
+                    { type: "Paint", direction: "bottom-right", color: "Yellow", row: 0, col: 4 },
+                    { type: "Splitter", direction: "bottom", row: 3, col: 3 },
+                    { type: "Target", direction: "top", trains: ["Green"], row: 6, col: 0 },
+                    { type: "Target", direction: "top", trains: ["Green"], row: 6, col: 1 },
+                    { type: "Source", direction: "top", trains: ["Orange", "Orange", "Orange", "Orange"], row: 6, col: 3 },
+                    { type: "Target", direction: "top", trains: ["Green"], row: 6, col: 5 },
+                    { type: "Target", direction: "top", trains: ["Green"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Jagd",
+                difficulty: 9,
+                cells: [
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 1, col: 1 },
+                    { type: "Rock", row: 1, col: 3 },
+                    { type: "Source", direction: "right", trains: ["Purple"], row: 2, col: 1 },
+                    { type: "Rock", row: 2, col: 3 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 3, col: 1 },
+                    { type: "Rock", row: 3, col: 3 },
+                    { type: "Target", direction: ["right"], trains: ["Yellow", "Purple"], row: 3, col: 5 },
+                    { type: "Source", direction: "right", trains: ["Purple"], row: 4, col: 1 },
+                    { type: "Rock", row: 4, col: 3 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 5, col: 1 },
+                    { type: "Rock", row: 5, col: 3 }
+                ]
+            },
+            {
+                name: "Clown Car",
+                difficulty: 10,
+                cells: [
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 0, col: 0 },
+                    { type: "Source", direction: "bottom", trains: ["Yellow"], row: 0, col: 1 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 0, col: 2 },
+                    { type: "Source", direction: "left", trains: ["Red"], row: 0, col: 6 },
+                    { type: "Source", direction: "left", trains: ["Yellow"], row: 1, col: 6 },
+                    { type: "Source", direction: "left", trains: ["Blue"], row: 2, col: 6 },
+                    { type: "Target", direction: ["top", "left", "bottom", "right"], trains: ["Green", "Green", "Green", "Green", "Orange", "Orange", "Orange", "Orange", "Purple", "Purple", "Purple", "Purple"], row: 3, col: 3 },
+                    { type: "Source", direction: "right", trains: ["Blue"], row: 4, col: 0 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 5, col: 0 },
+                    { type: "Source", direction: "right", trains: ["Red"], row: 6, col: 0 },
+                    { type: "Source", direction: "top", trains: ["Blue"], row: 6, col: 4 },
+                    { type: "Source", direction: "top", trains: ["Yellow"], row: 6, col: 5 },
+                    { type: "Source", direction: "top", trains: ["Red"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Rocky Road",
+                difficulty: 10,
+                cells: [
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 0, col: 0 },
+                    { type: "Rock", row: 0, col: 3 },
+                    { type: "Target", direction: ["left"], trains: ["Green"], row: 0, col: 6 },
+                    { type: "Rock", row: 1, col: 3 },
+                    { type: "Rock", row: 1, col: 5 },
+                    { type: "Rock", row: 1, col: 6 },
+                    { type: "Rock", row: 2, col: 3 },
+                    { type: "Rock", row: 2, col: 5 },
+                    { type: "Rock", row: 2, col: 6 },
+                    { type: "Rock", row: 3, col: 0 },
+                    { type: "Rock", row: 3, col: 1 },
+                    { type: "Rock", row: 3, col: 5 },
+                    { type: "Rock", row: 3, col: 6 },
+                    { type: "Rock", row: 4, col: 3 },
+                    { type: "Rock", row: 4, col: 5 },
+                    { type: "Rock", row: 4, col: 6 },
+                    { type: "Rock", row: 5, col: 3 },
+                    { type: "Rock", row: 5, col: 5 },
+                    { type: "Rock", row: 5, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Blue"], row: 6, col: 0 },
+                    { type: "Rock", row: 6, col: 3 },
+                    { type: "Target", direction: ["left"], trains: ["Green"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Shanimal",
+                difficulty: 11,
+                cells: [
+                    { type: "Target", direction: ["left"], trains: ["Red", "Purple"], row: 0, col: 5 },
+                    { type: "Rock", row: 0, col: 6 },
+                    { type: "Rock", row: 1, col: 5 },
+                    { type: "Source", direction: "bottom", trains: ["Red", "Red"], row: 1, col: 6 },
+                    { type: "Rock", row: 2, col: 2 },
+                    { type: "Rock", row: 2, col: 4 },
+                    { type: "Rock", row: 3, col: 2 },
+                    { type: "Rock", row: 3, col: 4 },
+                    { type: "Rock", row: 4, col: 2 },
+                    { type: "Rock", row: 4, col: 4 },
+                    { type: "Source", direction: "top", trains: ["Blue", "Blue"], row: 5, col: 0 },
+                    { type: "Rock", row: 5, col: 1 },
+                    { type: "Rock", row: 6, col: 0 },
+                    { type: "Target", direction: ["right"], trains: ["Blue", "Purple"], row: 6, col: 1 }
+                ]
+            },
+            {
+                name: "Pwr Ovrwhlmng",
+                difficulty: 11,
+                cells: [
+                    { type: "Target", direction: ["bottom"], trains: ["Yellow"], row: 0, col: 3 },
+                    { type: "Target", direction: ["bottom"], trains: ["Yellow"], row: 0, col: 4 },
+                    { type: "Target", direction: ["right"], trains: ["Blue"], row: 1, col: 0 },
+                    { type: "Splitter", direction: "bottom", row: 1, col: 1 },
+                    { type: "Splitter", direction: "right", row: 1, col: 3 },
+                    { type: "Splitter", direction: "right", row: 3, col: 2 },
+                    { type: "Source", direction: "left", trains: ["Green"], row: 3, col: 6 },
+                    { type: "Target", direction: ["right"], trains: ["Yellow"], row: 5, col: 0 },
+                    { type: "Splitter", direction: "top", row: 5, col: 1 },
+                    { type: "Splitter", direction: "right", row: 5, col: 3 },
+                    { type: "Target", direction: "top", trains: ["Blue"], row: 6, col: 3 },
+                    { type: "Target", direction: "top", trains: ["Blue"], row: 6, col: 4 }
+                ]
+            },
+            {
+                name: "Cayman",
+                difficulty: 11,
+                cells: [
+                    { type: "Target", direction: ["right"], trains: ["Yellow"], row: 0, col: 0 },
+                    { type: "Target", direction: ["right"], trains: ["Blue", "Red", "Yellow", "Blue", "Red", "Yellow"], row: 1, col: 0 },
+                    { type: "Splitter", direction: "top", row: 1, col: 1 },
+                    { type: "Paint", direction: "vertical", color: "Red", row: 3, col: 4 },
+                    { type: "Paint", direction: "vertical", color: "Yellow", row: 3, col: 5 },
+                    { type: "Paint", direction: "vertical", color: "Blue", row: 4, col: 4 },
+                    { type: "Paint", direction: "vertical", color: "Blue", row: 4, col: 5 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 6, col: 0 }
+                ]
+            }
+        ]
+    },
+    {
+        name: "Peterborough",
+        difficulty: 425,
+        puzzles: [
+            {
+                name: "Klickers",
+                difficulty: 6,
+                cells: [
+                    { type: "Rock", row: 0, col: 0 },
+                    { type: "Target", direction: ["right"], trains: ["Orange", "Purple"], row: 0, col: 1 },
+                    { type: "Source", direction: "bottom", trains: ["Red", "Yellow", "Blue", "Red"], row: 1, col: 0 },
+                    { type: "Rock", row: 1, col: 1 },
+                    { type: "Rock", row: 2, col: 2 },
+                    { type: "Rock", row: 3, col: 3 },
+                    { type: "Rock", row: 4, col: 4 },
+                    { type: "Rock", row: 5, col: 5 }
+                ]
+            },
+            {
+                name: "Hazard",
+                difficulty: 8,
+                cells: [
+                    { type: "Rock", row: 0, col: 0 },
+                    { type: "Source", direction: "bottom", trains: ["Yellow"], row: 0, col: 1 },
+                    { type: "Rock", row: 1, col: 2 },
+                    { type: "Rock", row: 1, col: 4 },
+                    { type: "Source", direction: "top", trains: ["Yellow"], row: 1, col: 6 },
+                    { type: "Rock", row: 2, col: 6 },
+                    { type: "Rock", row: 3, col: 0 },
+                    { type: "Rock", row: 3, col: 3 },
+                    { type: "Source", direction: "left", trains: ["Yellow"], row: 3, col: 6 },
+                    { type: "Rock", row: 4, col: 5 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 5, col: 0 },
+                    { type: "Rock", row: 5, col: 3 },
+                    { type: "Rock", row: 6, col: 5 },
+                    { type: "Target", direction: "top", trains: ["Yellow"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Asymmetric",
+                difficulty: 11,
+                cells: [
+                    { type: "Target", direction: ["bottom"], trains: ["Red"], row: 1, col: 5 },
+                    { type: "Splitter", direction: "top", row: 2, col: 3 },
+                    { type: "Source", direction: "top", trains: ["Orange"], row: 3, col: 0 },
+                    { type: "Rock", row: 3, col: 2 },
+                    { type: "Rock", row: 3, col: 3 },
+                    { type: "Rock", row: 3, col: 4 },
+                    { type: "Source", direction: "bottom", trains: ["Orange"], row: 3, col: 6 },
+                    { type: "Splitter", direction: "bottom", row: 4, col: 3 },
+                    { type: "Target", direction: "top", trains: ["Yellow"], row: 5, col: 1 }
+                ]
+            },
+            {
+                name: "Squelchen",
+                difficulty: 11,
+                cells: [
+                    { type: "Target", direction: ["left"], trains: ["Green", "Yellow"], row: 0, col: 5 },
+                    { type: "Rock", row: 0, col: 6 },
+                    { type: "Rock", row: 1, col: 5 },
+                    { type: "Source", direction: "bottom", trains: ["Purple", "Purple"], row: 1, col: 6 },
+                    { type: "Rock", row: 2, col: 2 },
+                    { type: "Paint", direction: "vertical", color: "Red", row: 2, col: 3 },
+                    { type: "Paint", direction: "horizontal", color: "Blue", row: 3, col: 2 },
+                    { type: "Paint", direction: "horizontal", color: "Green", row: 3, col: 4 },
+                    { type: "Paint", direction: "vertical", color: "Yellow", row: 4, col: 3 },
+                    { type: "Rock", row: 4, col: 4 },
+                    { type: "Source", direction: "top", trains: ["Purple", "Purple"], row: 5, col: 0 },
+                    { type: "Rock", row: 5, col: 1 },
+                    { type: "Rock", row: 6, col: 0 },
+                    { type: "Target", direction: ["right"], trains: ["Red", "Blue"], row: 6, col: 1 }
+                ]
+            },
+            {
+                name: "Mini-Yo-We",
+                difficulty: 11,
+                cells: [
+                    { type: "Source", direction: "right", trains: ["Green"], row: 2, col: 0 },
+                    { type: "Paint", direction: "horizontal", color: "Red", row: 2, col: 2 },
+                    { type: "Paint", direction: "horizontal", color: "Blue", row: 2, col: 3 },
+                    { type: "Target", direction: ["left"], trains: ["Purple"], row: 2, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Green"], row: 3, col: 0 },
+                    { type: "Paint", direction: "horizontal", color: "Blue", row: 3, col: 2 },
+                    { type: "Paint", direction: "horizontal", color: "Red", row: 3, col: 3 },
+                    { type: "Target", direction: ["left"], trains: ["Purple"], row: 3, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Green"], row: 4, col: 0 },
+                    { type: "Paint", direction: "horizontal", color: "Red", row: 4, col: 2 },
+                    { type: "Paint", direction: "horizontal", color: "Blue", row: 4, col: 3 },
+                    { type: "Target", direction: ["left"], trains: ["Purple"], row: 4, col: 6 }
+                ]
+            },
+            {
+                name: "A Barrel Roll",
+                difficulty: 12,
+                cells: [
+                    { type: "Source", direction: "left", trains: ["Blue", "Blue", "Blue", "Blue"], row: 2, col: 2 },
+                    { type: "Source", direction: "top", trains: ["Red", "Yellow", "Red", "Yellow"], row: 2, col: 4 },
+                    { type: "Target", direction: ["top", "left", "right", "bottom"], trains: ["Purple", "Green"], row: 3, col: 3 },
+                    { type: "Source", direction: "bottom", trains: ["Red", "Yellow", "Red", "Yellow"], row: 4, col: 2 },
+                    { type: "Source", direction: "right", trains: ["Blue", "Blue", "Blue", "Blue"], row: 4, col: 4 }
+                ]
+            },
+            {
+                name: "Lorne Park",
+                difficulty: 12,
+                cells: [
+                    { type: "Source", direction: "right", trains: ["Red"], row: 0, col: 0 },
+                    { type: "Source", direction: "left", trains: ["Blue"], row: 0, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 1, col: 0 },
+                    { type: "Source", direction: "left", trains: ["Yellow"], row: 1, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Blue"], row: 2, col: 0 },
+                    { type: "Source", direction: "left", trains: ["Red"], row: 2, col: 6 },
+                    { type: "Target", direction: ["bottom"], trains: ["Red", "Yellow", "Blue"], row: 3, col: 3 },
+                    { type: "Source", direction: "right", trains: ["Blue"], row: 4, col: 0 },
+                    { type: "Source", direction: "left", trains: ["Red"], row: 4, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 5, col: 0 },
+                    { type: "Source", direction: "left", trains: ["Yellow"], row: 5, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Red"], row: 6, col: 0 },
+                    { type: "Source", direction: "left", trains: ["Blue"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Adama",
+                difficulty: 13,
+                cells: [
+                    { type: "Source", direction: "bottom", trains: ["Green"], row: 0, col: 4 },
+                    { type: "Source", direction: "left", trains: ["Orange"], row: 0, col: 6 },
+                    { type: "Target", direction: ["right"], trains: ["Red"], row: 1, col: 0 },
+                    { type: "Splitter", direction: "top", row: 1, col: 1 },
+                    { type: "Splitter", direction: "top", row: 2, col: 5 },
+                    { type: "Target", direction: ["left"], trains: ["Yellow"], row: 2, col: 6 },
+                    { type: "Target", direction: ["right"], trains: ["Yellow"], row: 3, col: 0 },
+                    { type: "Splitter", direction: "top", row: 3, col: 1 },
+                    { type: "Splitter", direction: "top", row: 4, col: 5 },
+                    { type: "Target", direction: ["left"], trains: ["Red"], row: 4, col: 6 },
+                    { type: "Target", direction: ["right"], trains: ["Red"], row: 5, col: 0 },
+                    { type: "Splitter", direction: "top", row: 5, col: 1 },
+                    { type: "Target", direction: ["right"], trains: ["Orange"], row: 6, col: 0 },
+                    { type: "Splitter", direction: "top", row: 6, col: 5 },
+                    { type: "Target", direction: ["left"], trains: ["Blue"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Tonelympics",
+                difficulty: 13,
+                cells: [
+                    { type: "Rock", row: 0, col: 0 },
+                    { type: "Target", direction: ["right"], trains: ["Orange"], row: 0, col: 1 },
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 1, col: 0 },
+                    { type: "Rock", row: 1, col: 1 },
+                    { type: "Target", direction: ["right"], trains: ["Purple"], row: 1, col: 2 },
+                    { type: "Source", direction: "bottom", trains: ["Yellow"], row: 2, col: 1 },
+                    { type: "Rock", row: 2, col: 2 },
+                    { type: "Target", direction: ["right"], trains: ["Orange"], row: 2, col: 3 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 3, col: 2 },
+                    { type: "Rock", row: 3, col: 3 },
+                    { type: "Target", direction: ["right"], trains: ["Purple"], row: 3, col: 4 },
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 4, col: 3 },
+                    { type: "Rock", row: 4, col: 4 },
+                    { type: "Rock", row: 5, col: 5 }
+                ]
+            }
+        ]
+    },
+    {
+        name: "Quebec City",
+        difficulty: 425,
+        puzzles: [
+            {
+                name: "Fire Eyed",
+                difficulty: 7,
+                cells: [
+                    { type: "Target", direction: ["bottom"], trains: ["Orange"], row: 0, col: 3 },
+                    { type: "Source", direction: "top", trains: ["Yellow"], row: 1, col: 0 },
+                    { type: "Source", direction: "top", trains: ["Red"], row: 1, col: 6 },
+                    { type: "Source", direction: "left", trains: ["Red"], row: 3, col: 1 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 3, col: 5 },
+                    { type: "Source", direction: "bottom", trains: ["Yellow"], row: 5, col: 0 },
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 5, col: 6 },
+                    { type: "Target", direction: "top", trains: ["Orange"], row: 6, col: 3 }
+                ]
+            },
+            {
+                name: "Picnic",
+                difficulty: 7,
+                cells: [
+                    { type: "Source", direction: "right", trains: ["Red", "Red"], row: 2, col: 0 },
+                    { type: "Target", direction: ["left"], trains: ["Orange"], row: 2, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Yellow", "Yellow"], row: 3, col: 0 },
+                    { type: "Target", direction: ["left"], trains: ["Purple", "Purple"], row: 3, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Blue", "Blue"], row: 4, col: 0 },
+                    { type: "Target", direction: ["left"], trains: ["Green"], row: 4, col: 6 }
+                ]
+            },
+            {
+                name: "Spindle",
+                difficulty: 8,
+                cells: [
+                    { type: "Rock", row: 1, col: 4 },
+                    { type: "Rock", row: 2, col: 1 },
+                    { type: "Target", direction: "top", trains: ["Green"], row: 2, col: 2 },
+                    { type: "Source", direction: "top", trains: ["Red"], row: 2, col: 3 },
+                    { type: "Target", direction: ["right"], trains: ["Blue"], row: 2, col: 4 },
+                    { type: "Source", direction: "left", trains: ["Yellow"], row: 3, col: 2 },
+                    { type: "Rock", row: 3, col: 3 },
+                    { type: "Source", direction: "right", trains: ["Green"], row: 3, col: 4 },
+                    { type: "Target", direction: ["left"], trains: ["Red"], row: 4, col: 2 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 4, col: 3 },
+                    { type: "Target", direction: ["bottom"], trains: ["Yellow"], row: 4, col: 4 },
+                    { type: "Rock", row: 4, col: 5 },
+                    { type: "Rock", row: 5, col: 2 },
+                    { type: "Rock", row: 6, col: 2 }
+                ]
+            },
+            {
+                name: "Rebelt",
+                difficulty: 10,
+                cells: [
+                    { type: "Target", direction: ["bottom"], trains: ["Yellow"], row: 0, col: 2 },
+                    { type: "Target", direction: ["bottom"], trains: ["Blue", "Blue"], row: 0, col: 3 },
+                    { type: "Target", direction: ["bottom"], trains: ["Orange"], row: 0, col: 4 },
+                    { type: "Splitter", direction: "bottom", row: 3, col: 3 },
+                    { type: "Paint", direction: "bottom-left", color: "Orange", row: 3, col: 4 },
+                    { type: "Source", direction: "right", trains: ["Green"], row: 5, col: 0 },
+                    { type: "Source", direction: "left", trains: ["Green"], row: 5, col: 6 }
+                ]
+            },
+            {
+                name: "RGB",
+                difficulty: 11,
+                cells: [
+                    { type: "Target", direction: "top", trains: ["Blue"], row: 2, col: 0 },
+                    { type: "Target", direction: "top", trains: ["Green"], row: 2, col: 1 },
+                    { type: "Target", direction: "top", trains: ["Red"], row: 2, col: 2 },
+                    { type: "Target", direction: "top", trains: ["Red"], row: 2, col: 4 },
+                    { type: "Target", direction: "top", trains: ["Green"], row: 2, col: 5 },
+                    { type: "Target", direction: "top", trains: ["Blue"], row: 2, col: 6 },
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 3, col: 0 },
+                    { type: "Source", direction: "bottom", trains: ["Green"], row: 3, col: 1 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 3, col: 2 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 3, col: 4 },
+                    { type: "Source", direction: "bottom", trains: ["Green"], row: 3, col: 5 },
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 3, col: 6 }
+                ]
+            },
+            {
+                name: "Dr. Linus",
+                difficulty: 11,
+                cells: [
+                    { type: "Target", direction: "top", trains: ["Purple"], row: 1, col: 3 },
+                    { type: "Source", direction: "top", trains: ["Yellow"], row: 2, col: 2 },
+                    { type: "Rock", row: 2, col: 3 },
+                    { type: "Source", direction: "top", trains: ["Red", "Red"], row: 2, col: 4 },
+                    { type: "Rock", row: 3, col: 1 },
+                    { type: "Rock", row: 3, col: 2 },
+                    { type: "Rock", row: 3, col: 3 },
+                    { type: "Rock", row: 3, col: 4 },
+                    { type: "Rock", row: 3, col: 5 },
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 4, col: 2 },
+                    { type: "Rock", row: 4, col: 3 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 4, col: 4 },
+                    { type: "Target", direction: ["bottom"], trains: ["Orange", "Orange"], row: 5, col: 3 }
+                ]
+            },
+            {
+                name: "Glockenspiel",
+                difficulty: 11,
+                cells: [
+                    { type: "Paint", direction: "bottom-right", color: "Yellow", row: 0, col: 0 },
+                    { type: "Splitter", direction: "bottom", row: 0, col: 3 },
+                    { type: "Source", direction: "bottom", trains: ["Green", "Green", "Green"], row: 0, col: 6 },
+                    { type: "Splitter", direction: "right", row: 3, col: 0 },
+                    { type: "Target", direction: ["top", "bottom", "left", "right"], trains: ["Red", "Red", "Red", "Blue", "Blue", "Blue", "Yellow", "Yellow", "Yellow"], row: 3, col: 3 },
+                    { type: "Splitter", direction: "left", row: 3, col: 6 },
+                    { type: "Paint", direction: "top-right", color: "Blue", row: 6, col: 0 },
+                    { type: "Splitter", direction: "top", row: 6, col: 3 },
+                    { type: "Paint", direction: "top-left", color: "Red", row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Jamboree",
+                difficulty: 12,
+                cells: [
+                    { type: "Paint", direction: "bottom-right", color: "Blue", row: 0, col: 0 },
+                    { type: "Paint", direction: "vertical", color: "Blue", row: 2, col: 0 },
+                    { type: "Target", direction: ["bottom"], trains: ["Blue", "Yellow"], row: 2, col: 1 },
+                    { type: "Splitter", direction: "left", row: 3, col: 1 },
+                    { type: "Target", direction: ["top", "bottom"], trains: ["Green"], row: 3, col: 2 },
+                    { type: "Source", direction: "right", trains: ["Red", "Red", "Red", "Red"], row: 3, col: 3 },
+                    { type: "Paint", direction: "vertical", color: "Yellow", row: 4, col: 0 },
+                    { type: "Target", direction: "top", trains: ["Blue", "Yellow"], row: 4, col: 1 },
+                    { type: "Paint", direction: "top-right", color: "Yellow", row: 6, col: 0 }
+                ]
+            },
+            {
+                name: "Licorice Allsorts",
+                difficulty: 13,
+                cells: [
+                    { type: "Target", direction: "top", trains: ["Purple"], row: 3, col: 0 },
+                    { type: "Target", direction: "top", trains: ["Green"], row: 3, col: 1 },
+                    { type: "Target", direction: "top", trains: ["Orange"], row: 3, col: 2 },
+                    { type: "Target", direction: "top", trains: ["Blue"], row: 3, col: 3 },
+                    { type: "Target", direction: "top", trains: ["Yellow"], row: 3, col: 4 },
+                    { type: "Target", direction: "top", trains: ["Red"], row: 3, col: 5 },
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 4, col: 0 },
+                    { type: "Source", direction: "bottom", trains: ["Yellow"], row: 4, col: 1 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 4, col: 2 },
+                    { type: "Source", direction: "bottom", trains: ["Orange"], row: 4, col: 3 },
+                    { type: "Source", direction: "bottom", trains: ["Green"], row: 4, col: 4 },
+                    { type: "Source", direction: "bottom", trains: ["Purple"], row: 4, col: 5 }
+                ]
+            }
+        ]
+    },
+    {
+        name: "Regina",
+        difficulty: 425,
+        puzzles: [
+            {
+                name: "Sangre Grande",
+                difficulty: 7,
+                cells: [
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 1, col: 1 },
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 1, col: 2 },
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 1, col: 3 },
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 1, col: 4 },
+                    { type: "Source", direction: "top", trains: ["Blue"], row: 1, col: 5 },
+                    { type: "Target", direction: "top", trains: ["Purple", "Red"], row: 6, col: 0 }
+                ]
+            },
+            {
+                name: "The Variable",
+                difficulty: 7,
+                cells: [
+                    { type: "Source", direction: "right", trains: ["Red", "Red"], row: 1, col: 1 },
+                    { type: "Source", direction: "left", trains: ["Red"], row: 1, col: 5 },
+                    { type: "Target", direction: ["left"], trains: ["Orange"], row: 3, col: 1 },
+                    { type: "Target", direction: ["right"], trains: ["Red", "Yellow"], row: 3, col: 5 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 5, col: 1 },
+                    { type: "Source", direction: "left", trains: ["Yellow", "Yellow"], row: 5, col: 5 }
+                ]
+            },
+            {
+                name: "Orff",
+                difficulty: 8,
+                cells: [
+                    { type: "Target", direction: ["bottom"], trains: ["Red"], row: 0, col: 0 },
+                    { type: "Target", direction: ["bottom"], trains: ["Yellow"], row: 0, col: 1 },
+                    { type: "Target", direction: ["bottom"], trains: ["Yellow"], row: 0, col: 2 },
+                    { type: "Target", direction: ["bottom"], trains: ["Yellow"], row: 0, col: 4 },
+                    { type: "Target", direction: ["bottom"], trains: ["Yellow"], row: 0, col: 5 },
+                    { type: "Target", direction: ["bottom"], trains: ["Blue"], row: 0, col: 6 },
+                    { type: "Splitter", direction: "bottom", row: 3, col: 1 },
+                    { type: "Splitter", direction: "bottom", row: 3, col: 5 },
+                    { type: "Source", direction: "top", trains: ["Red"], row: 6, col: 0 },
+                    { type: "Source", direction: "top", trains: ["Yellow"], row: 6, col: 1 },
+                    { type: "Source", direction: "top", trains: ["Blue"], row: 6, col: 2 },
+                    { type: "Source", direction: "top", trains: ["Red"], row: 6, col: 4 },
+                    { type: "Source", direction: "top", trains: ["Yellow"], row: 6, col: 5 },
+                    { type: "Source", direction: "top", trains: ["Blue"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Somewhere",
+                difficulty: 10,
+                cells: [
+                    { type: "Target", direction: ["right"], trains: ["Red", "Orange", "Yellow", "Green", "Blue", "Purple"], row: 0, col: 0 },
+                    { type: "Paint", direction: "bottom-left", color: "Red", row: 0, col: 6 },
+                    { type: "Paint", direction: "vertical", color: "Purple", row: 1, col: 5 },
+                    { type: "Paint", direction: "vertical", color: "Blue", row: 2, col: 4 },
+                    { type: "Paint", direction: "vertical", color: "Green", row: 3, col: 3 },
+                    { type: "Paint", direction: "vertical", color: "Yellow", row: 4, col: 2 },
+                    { type: "Paint", direction: "vertical", color: "Orange", row: 5, col: 1 },
+                    { type: "Paint", direction: "top-right", color: "Red", row: 6, col: 0 },
+                    { type: "Source", direction: "top", trains: ["Red", "Orange", "Yellow", "Green", "Blue", "Purple"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "U-Sector",
+                difficulty: 11,
+                cells: [
+                    { type: "Rock", row: 1, col: 2 },
+                    { type: "Rock", row: 1, col: 3 },
+                    { type: "Rock", row: 1, col: 4 },
+                    { type: "Rock", row: 1, col: 5 },
+                    { type: "Source", direction: "top", trains: ["Purple"], row: 2, col: 0 },
+                    { type: "Target", direction: "top", trains: ["Orange"], row: 2, col: 1 },
+                    { type: "Rock", row: 3, col: 0 },
+                    { type: "Rock", row: 3, col: 1 },
+                    { type: "Splitter", direction: "right", row: 3, col: 4 },
+                    { type: "Source", direction: "bottom", trains: ["Green"], row: 4, col: 0 },
+                    { type: "Target", direction: ["bottom"], trains: ["Blue", "Blue"], row: 4, col: 1 },
+                    { type: "Rock", row: 5, col: 2 },
+                    { type: "Rock", row: 5, col: 3 },
+                    { type: "Rock", row: 5, col: 4 },
+                    { type: "Rock", row: 5, col: 5 }
+                ]
+            },
+            {
+                name: "Taking Trash",
+                difficulty: 11,
+                cells: [
+                    { type: "Source", direction: "right", trains: ["Red"], row: 0, col: 0 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 1, col: 0 },
+                    { type: "Source", direction: "right", trains: ["Blue"], row: 2, col: 0 },
+                    { type: "Splitter", direction: "top", row: 3, col: 3 },
+                    { type: "Target", direction: ["left"], trains: ["Red"], row: 4, col: 6 },
+                    { type: "Target", direction: ["left"], trains: ["Yellow"], row: 5, col: 6 },
+                    { type: "Target", direction: ["top", "right"], trains: ["Brown", "Brown", "Brown"], row: 6, col: 0 },
+                    { type: "Target", direction: ["left"], trains: ["Blue"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "The Quotient",
+                difficulty: 12,
+                cells: [
+                    { type: "Target", direction: ["bottom"], trains: ["Blue", "Blue", "Red", "Red"], row: 0, col: 2 },
+                    { type: "Target", direction: ["bottom"], trains: ["Green", "Yellow"], row: 0, col: 4 },
+                    { type: "Splitter", direction: "bottom", row: 3, col: 2 },
+                    { type: "Splitter", direction: "bottom", row: 3, col: 4 },
+                    { type: "Source", direction: "top", trains: ["Orange"], row: 6, col: 0 },
+                    { type: "Source", direction: "top", trains: ["Purple"], row: 6, col: 2 },
+                    { type: "Source", direction: "top", trains: ["Green"], row: 6, col: 4 },
+                    { type: "Source", direction: "top", trains: ["Green"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Trinidad",
+                difficulty: 13,
+                cells: [
+                    { type: "Source", direction: "right", trains: ["Red"], row: 0, col: 0 },
+                    { type: "Source", direction: "left", trains: ["Yellow"], row: 0, col: 6 },
+                    { type: "Splitter", direction: "left", row: 2, col: 3 },
+                    { type: "Target", direction: ["right"], trains: ["Green"], row: 3, col: 0 },
+                    { type: "Splitter", direction: "bottom", row: 3, col: 2 },
+                    { type: "Target", direction: ["top", "left", "bottom", "right"], trains: ["Red", "Yellow", "Blue", "Yellow"], row: 3, col: 3 },
+                    { type: "Splitter", direction: "top", row: 3, col: 4 },
+                    { type: "Splitter", direction: "right", row: 4, col: 3 },
+                    { type: "Source", direction: "right", trains: ["Blue"], row: 6, col: 0 },
+                    { type: "Source", direction: "left", trains: ["Green"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "The Denominator",
+                difficulty: 15,
+                cells: [
+                    { type: "Splitter", direction: "bottom", row: 2, col: 2 },
+                    { type: "Target", direction: ["left", "right"], trains: ["Red", "Blue"], row: 2, col: 3 },
+                    { type: "Splitter", direction: "bottom", row: 2, col: 4 },
+                    { type: "Source", direction: "top", trains: ["Yellow"], row: 5, col: 2 },
+                    { type: "Source", direction: "top", trains: ["Yellow"], row: 5, col: 4 },
+                    { type: "Rock", row: 6, col: 0 },
+                    { type: "Source", direction: "top", trains: ["Orange"], row: 6, col: 1 },
+                    { type: "Rock", row: 6, col: 2 },
+                    { type: "Source", direction: "top", trains: ["Green"], row: 6, col: 3 },
+                    { type: "Rock", row: 6, col: 4 },
+                    { type: "Source", direction: "top", trains: ["Orange"], row: 6, col: 5 },
+                    { type: "Target", direction: "top", trains: ["Yellow"], row: 6, col: 6 }
+                ]
+            }
+        ]
+    },
+    {
+        name: "St. John's",
+        difficulty: 425,
+        puzzles: [
+            {
+                name: "Back To Basics",
+                difficulty: 6,
+                cells: [
+                    { type: "Source", direction: "top", trains: ["Yellow", "Yellow"], row: 2, col: 1 },
+                    { type: "Rock", row: 2, col: 3 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 2, col: 4 },
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 5, col: 2 },
+                    { type: "Target", direction: ["right"], trains: ["Orange", "Orange", "Green", "Green"], row: 6, col: 0 }
+                ]
+            },
+            {
+                name: "The Constant",
+                difficulty: 8,
+                cells: [
+                    { type: "Source", direction: "right", trains: ["Red", "Red"], row: 1, col: 1 },
+                    { type: "Source", direction: "left", trains: ["Red"], row: 1, col: 5 },
+                    { type: "Rock", row: 2, col: 1 },
+                    { type: "Rock", row: 2, col: 2 },
+                    { type: "Rock", row: 2, col: 4 },
+                    { type: "Rock", row: 2, col: 5 },
+                    { type: "Target", direction: ["left"], trains: ["Orange"], row: 3, col: 1 },
+                    { type: "Rock", row: 3, col: 2 },
+                    { type: "Rock", row: 3, col: 4 },
+                    { type: "Target", direction: ["right"], trains: ["Red", "Yellow"], row: 3, col: 5 },
+                    { type: "Rock", row: 4, col: 1 },
+                    { type: "Rock", row: 4, col: 2 },
+                    { type: "Rock", row: 4, col: 4 },
+                    { type: "Rock", row: 4, col: 5 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 5, col: 1 },
+                    { type: "Source", direction: "left", trains: ["Yellow", "Yellow"], row: 5, col: 5 }
+                ]
+            },
+            {
+                name: "Willow",
+                difficulty: 9,
+                cells: [
+                    { type: "Target", direction: ["bottom"], trains: ["Blue", "Red"], row: 0, col: 3 },
+                    { type: "Source", direction: "top", trains: ["Blue", "Red", "Blue", "Red", "Blue", "Red", "Blue", "Red"], row: 6, col: 3 }
+                ]
+            },
+            {
+                name: "Squier",
+                difficulty: 12,
+                cells: [
+                    { type: "Source", direction: "bottom", trains: ["Green"], row: 0, col: 6 },
+                    { type: "Splitter", direction: "right", row: 3, col: 3 },
+                    { type: "Target", direction: ["top", "right"], trains: ["Green", "Green"], row: 6, col: 0 }
+                ]
+            },
+            {
+                name: "Oakwood Ave",
+                difficulty: 12,
+                cells: [
+                    { type: "Target", direction: ["right"], trains: ["Purple"], row: 0, col: 0 },
+                    { type: "Splitter", direction: "bottom", row: 0, col: 3 },
+                    { type: "Source", direction: "left", trains: ["Orange"], row: 0, col: 6 },
+                    { type: "Paint", direction: "vertical", color: "Red", row: 3, col: 0 },
+                    { type: "Rock", row: 3, col: 1 },
+                    { type: "Rock", row: 3, col: 2 },
+                    { type: "Rock", row: 3, col: 3 },
+                    { type: "Rock", row: 3, col: 4 },
+                    { type: "Rock", row: 3, col: 5 },
+                    { type: "Paint", direction: "vertical", color: "Blue", row: 3, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Orange"], row: 6, col: 0 },
+                    { type: "Splitter", direction: "top", row: 6, col: 3 },
+                    { type: "Target", direction: ["left"], trains: ["Purple"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Conquistador",
+                difficulty: 12,
+                cells: [
+                    { type: "Target", direction: ["top", "left", "right"], trains: ["Blue"], row: 2, col: 1 },
+                    { type: "Source", direction: "left", trains: ["Green"], row: 2, col: 5 },
+                    { type: "Paint", direction: "vertical", color: "Red", row: 2, col: 6 },
+                    { type: "Target", direction: ["right", "left"], trains: ["Purple"], row: 3, col: 1 },
+                    { type: "Source", direction: "left", trains: ["Green", "Green"], row: 3, col: 5 },
+                    { type: "Target", direction: ["bottom", "left", "right"], trains: ["Red"], row: 4, col: 1 },
+                    { type: "Source", direction: "left", trains: ["Green"], row: 4, col: 5 },
+                    { type: "Paint", direction: "vertical", color: "Blue", row: 4, col: 6 }
+                ]
+            },
+            {
+                name: "Erindale",
+                difficulty: 13,
+                cells: [
+                    { type: "Source", direction: "top", trains: ["Red"], row: 1, col: 1 },
+                    { type: "Target", direction: "top", trains: ["Red"], row: 1, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Orange"], row: 2, col: 1 },
+                    { type: "Target", direction: ["left"], trains: ["Green"], row: 2, col: 6 },
+                    { type: "Target", direction: ["top", "bottom"], trains: ["Yellow", "Yellow"], row: 3, col: 0 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 3, col: 1 },
+                    { type: "Splitter", direction: "left", row: 3, col: 4 },
+                    { type: "Target", direction: ["left"], trains: ["Yellow"], row: 3, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Green"], row: 4, col: 1 },
+                    { type: "Target", direction: ["left"], trains: ["Orange"], row: 4, col: 6 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 5, col: 1 },
+                    { type: "Target", direction: ["bottom"], trains: ["Blue"], row: 5, col: 6 }
+                ]
+            }
+        ]
+    },
+    {
+        name: "Toronto",
+        difficulty: 425,
+        puzzles: [
+            {
+                name: "Waterfall",
+                difficulty: 7,
+                cells: [
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 0, col: 0 },
+                    { type: "Rock", row: 0, col: 1 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 0, col: 2 },
+                    { type: "Rock", row: 0, col: 3 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 0, col: 4 },
+                    { type: "Rock", row: 0, col: 5 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 0, col: 6 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 1, col: 1 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 1, col: 3 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 1, col: 5 },
+                    { type: "Target", direction: "top", trains: ["Blue"], row: 6, col: 3 }
+                ]
+            },
+            {
+                name: "Norwich",
+                difficulty: 10,
+                cells: [
+                    { type: "Paint", direction: "horizontal", color: "Green", row: 0, col: 3 },
+                    { type: "Paint", direction: "horizontal", color: "Blue", row: 1, col: 3 },
+                    { type: "Rock", row: 2, col: 3 },
+                    { type: "Target", direction: ["right"], trains: ["Purple"], row: 3, col: 0 },
+                    { type: "Rock", row: 3, col: 3 },
+                    { type: "Source", direction: "left", trains: ["Red", "Purple", "Red", "Purple"], row: 3, col: 5 },
+                    { type: "Target", direction: ["top", "bottom"], trains: ["Green", "Green"], row: 3, col: 6 },
+                    { type: "Rock", row: 4, col: 3 },
+                    { type: "Paint", direction: "horizontal", color: "Yellow", row: 5, col: 3 },
+                    { type: "Paint", direction: "horizontal", color: "Purple", row: 6, col: 3 }
+                ]
+            },
+            {
+                name: "Volcano",
+                difficulty: 12,
+                cells: [
+                    { type: "Source", direction: "left", trains: ["Red"], row: 1, col: 2 },
+                    { type: "Source", direction: "right", trains: ["Red"], row: 1, col: 4 },
+                    { type: "Rock", row: 2, col: 2 },
+                    { type: "Source", direction: "top", trains: ["Red"], row: 2, col: 3 },
+                    { type: "Rock", row: 2, col: 4 },
+                    { type: "Source", direction: "left", trains: ["Red"], row: 3, col: 2 },
+                    { type: "Rock", row: 3, col: 3 },
+                    { type: "Source", direction: "right", trains: ["Red"], row: 3, col: 4 },
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 4, col: 3 },
+                    { type: "Target", direction: "top", trains: ["Red"], row: 6, col: 3 }
+                ]
+            },
+            {
+                name: "Three Below",
+                difficulty: 13,
+                cells: [
+                    { type: "Target", direction: ["bottom"], trains: ["Purple"], row: 0, col: 2 },
+                    { type: "Source", direction: "bottom", trains: ["Orange", "Orange", "Orange", "Orange"], row: 0, col: 3 },
+                    { type: "Target", direction: ["bottom"], trains: ["Green"], row: 0, col: 4 },
+                    { type: "Rock", row: 5, col: 0 },
+                    { type: "Rock", row: 5, col: 1 },
+                    { type: "Paint", direction: "vertical", color: "Red", row: 5, col: 2 },
+                    { type: "Paint", direction: "vertical", color: "Yellow", row: 5, col: 3 },
+                    { type: "Paint", direction: "vertical", color: "Blue", row: 5, col: 4 },
+                    { type: "Rock", row: 5, col: 5 },
+                    { type: "Rock", row: 5, col: 6 },
+                    { type: "Rock", row: 6, col: 0 },
+                    { type: "Rock", row: 6, col: 1 },
+                    { type: "Rock", row: 6, col: 5 },
+                    { type: "Rock", row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Slice of Life",
+                difficulty: 13,
+                cells: [
+                    { type: "Source", direction: "right", trains: ["Green"], row: 0, col: 1 },
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 0, col: 3 },
+                    { type: "Splitter", direction: "top", row: 3, col: 2 },
+                    { type: "Splitter", direction: "left", row: 3, col: 3 },
+                    { type: "Target", direction: "top", trains: ["Yellow", "Purple", "Purple", "Yellow"], row: 6, col: 3 }
+                ]
+            },
+            {
+                name: "Mr. Morgan",
+                difficulty: 13,
+                cells: [
+                    { type: "Target", direction: ["right"], trains: ["Red", "Red", "Red", "Red"], row: 0, col: 0 },
+                    { type: "Splitter", direction: "bottom", row: 0, col: 1 },
+                    { type: "Source", direction: "top", trains: ["Green"], row: 2, col: 2 },
+                    { type: "Paint", direction: "bottom-left", color: "Red", row: 2, col: 4 },
+                    { type: "Source", direction: "top", trains: ["Orange"], row: 3, col: 3 },
+                    { type: "Splitter", direction: "right", row: 4, col: 2 },
+                    { type: "Source", direction: "top", trains: ["Blue"], row: 4, col: 4 },
+                    { type: "Target", direction: "top", trains: ["Red", "Red", "Red", "Red"], row: 5, col: 2 },
+                    { type: "Target", direction: "top", trains: ["Red", "Red", "Red"], row: 6, col: 0 }
+                ]
+            },
+            {
+                name: "Chief",
+                difficulty: 15,
+                cells: [
+                    { type: "Source", direction: "left", trains: ["Yellow"], row: 1, col: 5 },
+                    { type: "Rock", row: 2, col: 2 },
+                    { type: "Rock", row: 2, col: 4 },
+                    { type: "Target", direction: ["bottom"], trains: ["Red"], row: 2, col: 5 },
+                    { type: "Target", direction: ["bottom"], trains: ["Yellow"], row: 2, col: 6 },
+                    { type: "Splitter", direction: "right", row: 3, col: 0 },
+                    { type: "Splitter", direction: "left", row: 3, col: 6 },
+                    { type: "Target", direction: ["left"], trains: ["Yellow"], row: 4, col: 1 },
+                    { type: "Rock", row: 4, col: 2 },
+                    { type: "Target", direction: "top", trains: ["Red"], row: 5, col: 0 },
+                    { type: "Source", direction: "right", trains: ["Orange"], row: 5, col: 1 }
+                ]
+            }
+        ]
+    },
+    {
+        name: "Uxbridge",
+        difficulty: 425,
+        puzzles: [
+            {
+                name: "Drummer Boy",
+                difficulty: 12,
+                cells: [
+                    { type: "Paint", direction: "bottom-right", color: "Red", row: 0, col: 0 },
+                    { type: "Splitter", direction: "bottom", row: 0, col: 5 },
+                    { type: "Target", direction: ["left"], trains: ["Blue", "Blue"], row: 0, col: 6 },
+                    { type: "Rock", row: 1, col: 6 },
+                    { type: "Splitter", direction: "top", row: 2, col: 5 },
+                    { type: "Target", direction: ["left"], trains: ["Blue", "Blue"], row: 2, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 3, col: 0 },
+                    { type: "Paint", direction: "horizontal", color: "Yellow", row: 3, col: 5 },
+                    { type: "Target", direction: ["left"], trains: ["Yellow"], row: 3, col: 6 },
+                    { type: "Splitter", direction: "bottom", row: 4, col: 5 },
+                    { type: "Target", direction: ["left"], trains: ["Red", "Red"], row: 4, col: 6 },
+                    { type: "Rock", row: 5, col: 6 },
+                    { type: "Paint", direction: "top-right", color: "Blue", row: 6, col: 0 },
+                    { type: "Splitter", direction: "top", row: 6, col: 5 },
+                    { type: "Target", direction: ["left"], trains: ["Red", "Red"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Forest Ave",
+                difficulty: 12,
+                cells: [
+                    { type: "Target", direction: ["right"], trains: ["Green"], row: 0, col: 0 },
+                    { type: "Source", direction: "left", trains: ["Blue"], row: 0, col: 6 },
+                    { type: "Target", direction: ["right"], trains: ["Green"], row: 1, col: 0 },
+                    { type: "Source", direction: "left", trains: ["Blue"], row: 1, col: 6 },
+                    { type: "Target", direction: ["right"], trains: ["Green"], row: 2, col: 0 },
+                    { type: "Source", direction: "left", trains: ["Blue"], row: 2, col: 6 },
+                    { type: "Target", direction: ["right"], trains: ["Green"], row: 3, col: 0 },
+                    { type: "Paint", direction: "vertical", color: "Yellow", row: 3, col: 3 },
+                    { type: "Source", direction: "left", trains: ["Yellow"], row: 3, col: 6 },
+                    { type: "Target", direction: ["right"], trains: ["Green"], row: 4, col: 0 },
+                    { type: "Source", direction: "left", trains: ["Blue"], row: 4, col: 6 },
+                    { type: "Target", direction: ["right"], trains: ["Green"], row: 5, col: 0 },
+                    { type: "Source", direction: "left", trains: ["Blue"], row: 5, col: 6 },
+                    { type: "Target", direction: ["right"], trains: ["Green"], row: 6, col: 0 },
+                    { type: "Source", direction: "left", trains: ["Blue"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Parachute",
+                difficulty: 13,
+                cells: [
+                    { type: "Source", direction: "right", trains: ["Purple"], row: 0, col: 0 },
+                    { type: "Source", direction: "left", trains: ["Purple"], row: 0, col: 6 },
+                    { type: "Target", direction: ["right"], trains: ["Yellow"], row: 1, col: 0 },
+                    { type: "Target", direction: ["left"], trains: ["Green"], row: 1, col: 6 },
+                    { type: "Paint", direction: "vertical", color: "Blue", row: 2, col: 2 },
+                    { type: "Paint", direction: "vertical", color: "Red", row: 2, col: 4 },
+                    { type: "Rock", row: 3, col: 3 },
+                    { type: "Paint", direction: "vertical", color: "Green", row: 4, col: 2 },
+                    { type: "Paint", direction: "vertical", color: "Yellow", row: 4, col: 4 },
+                    { type: "Target", direction: ["right"], trains: ["Red"], row: 5, col: 0 },
+                    { type: "Target", direction: ["left"], trains: ["Blue"], row: 5, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Purple"], row: 6, col: 0 },
+                    { type: "Source", direction: "left", trains: ["Purple"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "The Quest",
+                difficulty: 13,
+                cells: [
+                    { type: "Target", direction: ["bottom"], trains: ["Yellow"], row: 0, col: 0 },
+                    { type: "Target", direction: ["bottom"], trains: ["Blue"], row: 0, col: 5 },
+                    { type: "Target", direction: ["bottom"], trains: ["Purple"], row: 0, col: 6 },
+                    { type: "Splitter", direction: "right", row: 1, col: 0 },
+                    { type: "Paint", direction: "vertical", color: "Green", row: 2, col: 6 },
+                    { type: "Splitter", direction: "left", row: 4, col: 6 },
+                    { type: "Splitter", direction: "right", row: 5, col: 0 },
+                    { type: "Target", direction: "top", trains: ["Red"], row: 6, col: 0 },
+                    { type: "Target", direction: "top", trains: ["Blue"], row: 6, col: 5 },
+                    { type: "Source", direction: "top", trains: ["Purple"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Kes",
+                difficulty: 15,
+                cells: [
+                    { type: "Target", direction: ["bottom"], trains: ["Yellow"], row: 0, col: 0 },
+                    { type: "Target", direction: ["bottom"], trains: ["Red"], row: 0, col: 3 },
+                    { type: "Target", direction: ["bottom"], trains: ["Blue"], row: 0, col: 6 },
+                    { type: "Paint", direction: "vertical", color: "Blue", row: 3, col: 0 },
+                    { type: "Paint", direction: "vertical", color: "Red", row: 3, col: 1 },
+                    { type: "Paint", direction: "vertical", color: "Red", row: 3, col: 2 },
+                    { type: "Paint", direction: "vertical", color: "Red", row: 3, col: 3 },
+                    { type: "Paint", direction: "vertical", color: "Red", row: 3, col: 4 },
+                    { type: "Paint", direction: "vertical", color: "Red", row: 3, col: 5 },
+                    { type: "Paint", direction: "vertical", color: "Yellow", row: 3, col: 6 },
+                    { type: "Target", direction: "top", trains: ["Yellow"], row: 6, col: 0 },
+                    { type: "Source", direction: "top", trains: ["Purple"], row: 6, col: 1 },
+                    { type: "Source", direction: "top", trains: ["Purple"], row: 6, col: 2 },
+                    { type: "Source", direction: "top", trains: ["Purple"], row: 6, col: 3 },
+                    { type: "Source", direction: "top", trains: ["Purple"], row: 6, col: 4 },
+                    { type: "Source", direction: "top", trains: ["Purple"], row: 6, col: 5 },
+                    { type: "Target", direction: "top", trains: ["Blue"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Mockingbird",
+                difficulty: 15,
+                cells: [
+                    { type: "Target", direction: ["left"], trains: ["Orange"], row: 0, col: 1 },
+                    { type: "Rock", row: 0, col: 2 },
+                    { type: "Target", direction: ["left"], trains: ["Orange"], row: 0, col: 5 },
+                    { type: "Target", direction: ["bottom"], trains: ["Blue"], row: 0, col: 6 },
+                    { type: "Rock", row: 1, col: 2 },
+                    { type: "Splitter", direction: "bottom", row: 2, col: 2 },
+                    { type: "Rock", row: 3, col: 0 },
+                    { type: "Rock", row: 3, col: 1 },
+                    { type: "Splitter", direction: "right", row: 3, col: 2 },
+                    { type: "Source", direction: "left", trains: ["Green", "Blue", "Orange", "Blue"], row: 3, col: 6 },
+                    { type: "Splitter", direction: "top", row: 4, col: 2 },
+                    { type: "Rock", row: 5, col: 2 },
+                    { type: "Target", direction: ["left"], trains: ["Green"], row: 6, col: 1 },
+                    { type: "Rock", row: 6, col: 2 },
+                    { type: "Target", direction: ["left"], trains: ["Green"], row: 6, col: 5 },
+                    { type: "Target", direction: "top", trains: ["Blue"], row: 6, col: 6 }
+                ]
+            }
+        ]
+    },
+    {
+        name: "Vancouver",
+        difficulty: 425,
+        puzzles: [
+            {
+                name: "Drop Off",
+                difficulty: 15,
+                cells: [
+                    { type: "Target", direction: ["right"], trains: ["Red", "Red", "Red", "Red"], row: 2, col: 0 },
+                    { type: "Splitter", direction: "bottom", row: 2, col: 1 },
+                    { type: "Source", direction: "left", trains: ["Red"], row: 2, col: 6 },
+                    { type: "Target", direction: ["left"], trains: ["Orange"], row: 3, col: 6 },
+                    { type: "Target", direction: ["right"], trains: ["Yellow", "Yellow", "Yellow", "Yellow"], row: 4, col: 0 },
+                    { type: "Splitter", direction: "top", row: 4, col: 1 },
+                    { type: "Source", direction: "left", trains: ["Yellow"], row: 4, col: 6 }
+                ]
+            },
+            {
+                name: "Magic Carpet",
+                difficulty: 20,
+                cells: [
+                    { type: "Source", direction: "left", trains: ["Red"], row: 1, col: 4 },
+                    { type: "Rock", row: 1, col: 5 },
+                    { type: "Source", direction: "left", trains: ["Yellow"], row: 2, col: 3 },
+                    { type: "Rock", row: 2, col: 4 },
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 2, col: 5 },
+                    { type: "Source", direction: "left", trains: ["Green"], row: 3, col: 2 },
+                    { type: "Rock", row: 3, col: 3 },
+                    { type: "Source", direction: "bottom", trains: ["Yellow"], row: 3, col: 4 },
+                    { type: "Source", direction: "left", trains: ["Blue"], row: 4, col: 1 },
+                    { type: "Rock", row: 4, col: 2 },
+                    { type: "Source", direction: "bottom", trains: ["Green"], row: 4, col: 3 },
+                    { type: "Rock", row: 5, col: 1 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 5, col: 2 },
+                    { type: "Target", direction: ["top", "left"], trains: ["Red", "Yellow", "Blue", "Green"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Transmogrify",
+                difficulty: 20,
+                cells: [
+                    { type: "Source", direction: "right", trains: ["Green"], row: 0, col: 0 },
+                    { type: "Target", direction: ["right"], trains: ["Purple"], row: 0, col: 4 },
+                    { type: "Source", direction: "right", trains: ["Green"], row: 1, col: 0 },
+                    { type: "Target", direction: ["left"], trains: ["Orange"], row: 1, col: 4 },
+                    { type: "Source", direction: "right", trains: ["Green"], row: 2, col: 0 },
+                    { type: "Target", direction: ["right"], trains: ["Purple"], row: 2, col: 4 },
+                    { type: "Source", direction: "right", trains: ["Green"], row: 3, col: 0 },
+                    { type: "Target", direction: ["left"], trains: ["Orange"], row: 3, col: 4 },
+                    { type: "Rock", row: 4, col: 4 },
+                    { type: "Rock", row: 5, col: 4 },
+                    { type: "Paint", direction: "vertical", color: "Orange", row: 5, col: 5 },
+                    { type: "Paint", direction: "vertical", color: "Purple", row: 5, col: 6 }
+                ]
+            },
+            {
+                name: "Doppelganger",
+                difficulty: 20,
+                cells: [
+                    { type: "Source", direction: "right", trains: ["Red"], row: 2, col: 0 },
+                    { type: "Source", direction: "right", trains: ["Red"], row: 2, col: 2 },
+                    { type: "Target", direction: ["left"], trains: ["Red"], row: 2, col: 4 },
+                    { type: "Source", direction: "left", trains: ["Red"], row: 2, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Green"], row: 3, col: 0 },
+                    { type: "Target", direction: ["left"], trains: ["Yellow"], row: 3, col: 2 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 3, col: 4 },
+                    { type: "Target", direction: ["left"], trains: ["Green"], row: 3, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Blue"], row: 4, col: 0 },
+                    { type: "Source", direction: "right", trains: ["Blue"], row: 4, col: 2 },
+                    { type: "Target", direction: ["left"], trains: ["Blue"], row: 4, col: 4 },
+                    { type: "Source", direction: "left", trains: ["Blue"], row: 4, col: 6 }
+                ]
+            },
+            {
+                name: "Exhibition Station",
+                difficulty: 20,
+                cells: [
+                    { type: "Rock", row: 1, col: 2 },
+                    { type: "Rock", row: 1, col: 3 },
+                    { type: "Rock", row: 1, col: 4 },
+                    { type: "Target", direction: ["bottom"], trains: ["Blue", "Purple"], row: 2, col: 2 },
+                    { type: "Rock", row: 2, col: 3 },
+                    { type: "Target", direction: ["bottom"], trains: ["Orange", "Yellow"], row: 2, col: 4 },
+                    { type: "Rock", row: 3, col: 3 },
+                    { type: "Source", direction: "bottom", trains: ["Orange", "Orange"], row: 4, col: 0 },
+                    { type: "Rock", row: 4, col: 3 },
+                    { type: "Source", direction: "bottom", trains: ["Purple", "Purple"], row: 4, col: 6 },
+                    { type: "Rock", row: 5, col: 3 },
+                    { type: "Paint", direction: "top-right", color: "Yellow", row: 6, col: 0 },
+                    { type: "Rock", row: 6, col: 3 },
+                    { type: "Paint", direction: "top-left", color: "Blue", row: 6, col: 6 }
+                ]
+            }
+        ]
+    },
+    {
+        name: "Whitehorse",
+        difficulty: 425,
+        puzzles: [
+            {
+                name: "Focus Pocus",
+                difficulty: 20,
+                cells: [
+                    { type: "Source", direction: "bottom", trains: ["Red", "Yellow"], row: 2, col: 1 },
+                    { type: "Source", direction: "bottom", trains: ["Blue", "Red"], row: 2, col: 3 },
+                    { type: "Source", direction: "bottom", trains: ["Blue", "Yellow"], row: 2, col: 5 },
+                    { type: "Target", direction: "top", trains: ["Orange", "Orange"], row: 4, col: 1 },
+                    { type: "Target", direction: "top", trains: ["Purple", "Purple"], row: 4, col: 3 },
+                    { type: "Target", direction: "top", trains: ["Green", "Green"], row: 4, col: 5 }
+                ]
+            },
+            {
+                name: "Turing",
+                difficulty: 25,
+                cells: [
+                    { type: "Target", direction: ["left", "bottom"], trains: ["Green", "Green", "Green"], row: 0, col: 6 },
+                    { type: "Paint", direction: "vertical", color: "Yellow", row: 2, col: 3 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 3, col: 0 },
+                    { type: "Splitter", direction: "left", row: 3, col: 3 },
+                    { type: "Target", direction: "top", trains: ["Yellow", "Yellow", "Yellow"], row: 4, col: 3 },
+                    { type: "Source", direction: "top", trains: ["Blue", "Blue", "Blue"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Indusblue",
+                difficulty: 25,
+                cells: [
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 0, col: 0 },
+                    { type: "Source", direction: "bottom", trains: ["Yellow"], row: 0, col: 3 },
+                    { type: "Source", direction: "left", trains: ["Yellow"], row: 0, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 3, col: 0 },
+                    { type: "Target", direction: ["top", "left", "bottom", "right"], trains: ["Brown", "Brown", "Brown", "Brown", "Brown", "Brown", "Brown", "Brown"], row: 3, col: 3 },
+                    { type: "Source", direction: "left", trains: ["Yellow"], row: 3, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 6, col: 0 },
+                    { type: "Source", direction: "top", trains: ["Blue"], row: 6, col: 3 },
+                    { type: "Source", direction: "left", trains: ["Yellow"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Circle Square",
+                difficulty: 25,
+                cells: [
+                    { type: "Source", direction: "left", trains: ["Blue"], row: 2, col: 2 },
+                    { type: "Source", direction: "right", trains: ["Green"], row: 2, col: 4 },
+                    { type: "Target", direction: ["right"], trains: ["Red", "Yellow", "Blue"], row: 3, col: 0 },
+                    { type: "Splitter", direction: "left", row: 3, col: 3 },
+                    { type: "Target", direction: ["left"], trains: ["Red", "Yellow", "Blue"], row: 3, col: 6 },
+                    { type: "Source", direction: "left", trains: ["Orange"], row: 4, col: 2 },
+                    { type: "Source", direction: "right", trains: ["Red"], row: 4, col: 4 }
+                ]
+            },
+            {
+                name: "Bramblewood Lane",
+                difficulty: 30,
+                cells: [
+                    { type: "Target", direction: ["right"], trains: ["Yellow", "Yellow"], row: 0, col: 0 },
+                    { type: "Rock", row: 0, col: 3 },
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 1, col: 0 },
+                    { type: "Rock", row: 1, col: 3 },
+                    { type: "Paint", direction: "horizontal", color: "Blue", row: 1, col: 5 },
+                    { type: "Rock", row: 2, col: 3 },
+                    { type: "Source", direction: "right", trains: ["Red", "Red"], row: 3, col: 0 },
+                    { type: "Rock", row: 4, col: 3 },
+                    { type: "Source", direction: "top", trains: ["Red"], row: 5, col: 0 },
+                    { type: "Rock", row: 5, col: 3 },
+                    { type: "Paint", direction: "horizontal", color: "Yellow", row: 5, col: 5 },
+                    { type: "Target", direction: ["right"], trains: ["Blue", "Blue"], row: 6, col: 0 },
+                    { type: "Rock", row: 6, col: 3 }
+                ]
+            }
+        ]
+    },
+    //Featured puzzles
+    {
+        name: "Port Credit",
+        difficulty: 500,
+        puzzles: [
+            {
+                name: "Treedom",
+                difficulty: 5,
+                cells: [
+                    { type: "Target", direction: "top", trains: ["Green"], row: 1, col: 2 },
+                    { type: "Source", direction: "top", trains: ["Green", "Green", "Green", "Green", "Green", "Green"], row: 1, col: 3 },
+                    { type: "Target", direction: "top", trains: ["Green"], row: 1, col: 4 },
+                    { type: "Target", direction: ["left"], trains: ["Green"], row: 2, col: 1 },
+                    { type: "Rock", row: 2, col: 2 },
+                    { type: "Rock", row: 2, col: 3 },
+                    { type: "Rock", row: 2, col: 4 },
+                    { type: "Target", direction: ["right"], trains: ["Green"], row: 2, col: 5 },
+                    { type: "Target", direction: ["bottom"], trains: ["Green"], row: 3, col: 2 },
+                    { type: "Rock", row: 3, col: 3 },
+                    { type: "Target", direction: ["bottom"], trains: ["Green"], row: 3, col: 4 },
+                    { type: "Rock", row: 4, col: 3 },
+                    { type: "Rock", row: 5, col: 3 },
+                    { type: "Rock", row: 6, col: 2 },
+                    { type: "Rock", row: 6, col: 3 },
+                    { type: "Rock", row: 6, col: 4 }
+                ]
+            },
+            {
+                name: "Rock Climbing",
+                difficulty: 6,
+                cells: [
+                    { type: "Rock", row: 0, col: 0 },
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 1, col: 0 },
+                    { type: "Rock", row: 1, col: 1 },
+                    { type: "Rock", row: 1, col: 3 },
+                    { type: "Rock", row: 1, col: 5 },
+                    { type: "Rock", row: 3, col: 0 },
+                    { type: "Rock", row: 3, col: 1 },
+                    { type: "Rock", row: 3, col: 4 },
+                    { type: "Target", direction: ["left"], trains: ["Brown"], row: 3, col: 6 },
+                    { type: "Rock", row: 4, col: 2 },
+                    { type: "Source", direction: "top", trains: ["Green"], row: 5, col: 0 },
+                    { type: "Rock", row: 5, col: 4 },
+                    { type: "Rock", row: 6, col: 0 },
+                    { type: "Rock", row: 6, col: 2 },
+                    { type: "Rock", row: 6, col: 4 },
+                    { type: "Source", direction: "top", trains: ["Orange"], row: 6, col: 5 }
+                ]
+            },
+            {
+                name: "Bit Flipper",
+                difficulty: 10,
+                cells: [
+                    { type: "Target", direction: ["left"], trains: ["Blue", "Blue"], row: 0, col: 2 },
+                    { type: "Rock", row: 0, col: 3 },
+                    { type: "Source", direction: "right", trains: ["Blue"], row: 0, col: 4 },
+                    { type: "Rock", row: 1, col: 1 },
+                    { type: "Rock", row: 1, col: 2 },
+                    { type: "Rock", row: 1, col: 3 },
+                    { type: "Rock", row: 1, col: 4 },
+                    { type: "Rock", row: 1, col: 5 },
+                    { type: "Splitter", direction: "right", row: 3, col: 0 },
+                    { type: "Splitter", direction: "left", row: 3, col: 6 },
+                    { type: "Rock", row: 5, col: 1 },
+                    { type: "Rock", row: 5, col: 2 },
+                    { type: "Rock", row: 5, col: 3 },
+                    { type: "Rock", row: 5, col: 4 },
+                    { type: "Rock", row: 5, col: 5 },
+                    { type: "Target", direction: ["left"], trains: ["Red", "Red"], row: 6, col: 2 },
+                    { type: "Rock", row: 6, col: 3 },
+                    { type: "Source", direction: "right", trains: ["Red"], row: 6, col: 4 }
+                ]
+            },
+            {
+                name: "Trainz United",
+                difficulty: 10,
+                cells: [
+                    { type: "Source", direction: "left", trains: ["Red"], row: 0, col: 2 },
+                    { type: "Source", direction: "left", trains: ["Red"], row: 0, col: 6 },
+                    { type: "Source", direction: "top", trains: ["Red"], row: 1, col: 5 },
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 2, col: 6 },
+                    { type: "Source", direction: "top", trains: ["Red"], row: 3, col: 1 },
+                    { type: "Target", direction: ["bottom"], trains: ["Red"], row: 3, col: 3 },
+                    { type: "Source", direction: "top", trains: ["Red"], row: 3, col: 5 },
+                    { type: "Source", direction: "right", trains: ["Red"], row: 4, col: 4 },
+                    { type: "Source", direction: "right", trains: ["Red"], row: 5, col: 1 }
+                ]
+            },
+            {
+                name: "Discrepancy",
+                difficulty: 15,
+                cells: [
+                    { type: "Source", direction: "bottom", trains: ["Brown"], row: 0, col: 0 },
+                    { type: "Source", direction: "bottom", trains: ["Brown"], row: 0, col: 6 },
+                    { type: "Paint", direction: "vertical", color: "Red", row: 3, col: 0 },
+                    { type: "Paint", direction: "vertical", color: "Blue", row: 3, col: 2 },
+                    { type: "Paint", direction: "vertical", color: "Yellow", row: 3, col: 4 },
+                    { type: "Splitter", direction: "left", row: 3, col: 6 },
+                    { type: "Target", direction: "top", trains: ["Green"], row: 6, col: 0 },
+                    { type: "Target", direction: "top", trains: ["Orange"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "A Puzzler",
+                difficulty: 16,
+                cells: [
+                    { type: "Target", direction: ["bottom"], trains: ["Purple"], row: 0, col: 0 },
+                    { type: "Source", direction: "bottom", trains: ["Orange"], row: 0, col: 6 },
+                    { type: "Splitter", direction: "bottom", row: 1, col: 3 },
+                    { type: "Splitter", direction: "right", row: 3, col: 1 },
+                    { type: "Splitter", direction: "left", row: 3, col: 5 },
+                    { type: "Splitter", direction: "top", row: 5, col: 3 },
+                    { type: "Source", direction: "top", trains: ["Green"], row: 6, col: 0 },
+                    { type: "Target", direction: "top", trains: ["Yellow"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Painting The Mud",
+                difficulty: 20,
+                cells: [
+                    { type: "Splitter", direction: "bottom", row: 0, col: 3 },
+                    { type: "Paint", direction: "bottom-right", color: "Blue", row: 2, col: 2 },
+                    { type: "Paint", direction: "bottom-left", color: "Yellow", row: 2, col: 4 },
+                    { type: "Target", direction: ["top", "left", "bottom", "right"], trains: ["Red", "Green", "Blue", "Yellow"], row: 3, col: 3 },
+                    { type: "Paint", direction: "top-right", color: "Green", row: 4, col: 2 },
+                    { type: "Paint", direction: "top-left", color: "Red", row: 4, col: 4 },
+                    { type: "Source", direction: "top", trains: ["Brown"], row: 6, col: 3 }
+                ]
+            }
+        ]
+    },
+    {
+        name: "Lorne Park",
+        difficulty: 500,
+        puzzles: [
+            {
+                name: "Rookie Engineer",
+                difficulty: 5,
+                cells: [
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 0, col: 0 },
+                    { type: "Rock", row: 0, col: 2 },
+                    { type: "Source", direction: "left", trains: ["Blue"], row: 0, col: 6 },
+                    { type: "Rock", row: 1, col: 1 },
+                    { type: "Rock", row: 1, col: 2 },
+                    { type: "Rock", row: 1, col: 4 },
+                    { type: "Rock", row: 2, col: 5 },
+                    { type: "Rock", row: 3, col: 1 },
+                    { type: "Rock", row: 3, col: 2 },
+                    { type: "Rock", row: 3, col: 5 },
+                    { type: "Rock", row: 4, col: 1 },
+                    { type: "Rock", row: 4, col: 5 },
+                    { type: "Rock", row: 5, col: 1 },
+                    { type: "Rock", row: 5, col: 5 },
+                    { type: "Target", direction: "top", trains: ["Blue"], row: 6, col: 0 },
+                    { type: "Rock", row: 6, col: 1 },
+                    { type: "Rock", row: 6, col: 5 },
+                    { type: "Target", direction: "top", trains: ["Red"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Four Sorts",
+                difficulty: 15,
+                cells: [
+                    { type: "Rock", row: 0, col: 0 },
+                    { type: "Source", direction: "bottom", trains: ["Red", "Yellow", "Green", "Blue"], row: 0, col: 1 },
+                    { type: "Source", direction: "bottom", trains: ["Red", "Yellow", "Green", "Blue"], row: 0, col: 2 },
+                    { type: "Source", direction: "bottom", trains: ["Red", "Yellow", "Green", "Blue"], row: 0, col: 3 },
+                    { type: "Source", direction: "bottom", trains: ["Red", "Yellow", "Green", "Blue"], row: 0, col: 4 },
+                    { type: "Rock", row: 0, col: 6 },
+                    { type: "Rock", row: 6, col: 0 },
+                    { type: "Target", direction: "top", trains: ["Red", "Red", "Red", "Red"], row: 6, col: 1 },
+                    { type: "Target", direction: "top", trains: ["Yellow", "Yellow", "Yellow", "Yellow"], row: 6, col: 2 },
+                    { type: "Target", direction: "top", trains: ["Green", "Green", "Green", "Green"], row: 6, col: 3 },
+                    { type: "Target", direction: "top", trains: ["Blue", "Blue", "Blue", "Blue"], row: 6, col: 4 },
+                    { type: "Rock", row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Make A Green?",
+                difficulty: 17,
+                cells: [
+                    { type: "Target", direction: ["bottom"], trains: ["Green"], row: 0, col: 0 },
+                    { type: "Target", direction: ["bottom"], trains: ["Orange"], row: 0, col: 3 },
+                    { type: "Target", direction: ["bottom"], trains: ["Red"], row: 0, col: 6 },
+                    { type: "Paint", direction: "vertical", color: "Purple", row: 3, col: 0 },
+                    { type: "Splitter", direction: "bottom", row: 3, col: 3 },
+                    { type: "Paint", direction: "vertical", color: "Orange", row: 3, col: 6 },
+                    { type: "Source", direction: "top", trains: ["Brown"], row: 6, col: 3 }
+                ]
+            },
+            {
+                name: "Wait!!",
+                difficulty: 20,
+                cells: [
+                    { type: "Rock", row: 0, col: 3 },
+                    { type: "Rock", row: 1, col: 2 },
+                    { type: "Rock", row: 1, col: 5 },
+                    { type: "Rock", row: 2, col: 1 },
+                    { type: "Rock", row: 2, col: 5 },
+                    { type: "Rock", row: 3, col: 1 },
+                    { type: "Target", direction: ["bottom"], trains: ["Blue"], row: 3, col: 2 },
+                    { type: "Source", direction: "right", trains: ["Blue"], row: 3, col: 3 },
+                    { type: "Source", direction: "left", trains: ["Yellow"], row: 4, col: 3 },
+                    { type: "Target", direction: "top", trains: ["Yellow"], row: 4, col: 4 },
+                    { type: "Rock", row: 4, col: 5 },
+                    { type: "Rock", row: 5, col: 1 },
+                    { type: "Rock", row: 5, col: 2 },
+                    { type: "Rock", row: 5, col: 3 },
+                    { type: "Rock", row: 5, col: 4 },
+                    { type: "Rock", row: 5, col: 5 }
+                ]
+            },
+            {
+                name: "Upendown",
+                difficulty: 20,
+                cells: [
+                    { type: "Rock", row: 0, col: 5 },
+                    { type: "Splitter", direction: "right", row: 2, col: 0 },
+                    { type: "Rock", row: 2, col: 2 },
+                    { type: "Rock", row: 2, col: 6 },
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 3, col: 2 },
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 3, col: 4 },
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 3, col: 6 },
+                    { type: "Source", direction: "top", trains: ["Red"], row: 4, col: 3 },
+                    { type: "Source", direction: "top", trains: ["Red"], row: 4, col: 5 },
+                    { type: "Target", direction: "top", trains: ["Red"], row: 6, col: 0 },
+                    { type: "Target", direction: "top", trains: ["Blue"], row: 6, col: 1 },
+                    { type: "Paint", direction: "horizontal", color: "Purple", row: 6, col: 4 }
+                ]
+            },
+            {
+                name: "Red Multiplier",
+                difficulty: 25,
+                cells: [
+                    { type: "Target", direction: ["right"], trains: ["Red", "Red", "Red", "Red", "Red", "Red"], row: 0, col: 0 },
+                    { type: "Splitter", direction: "bottom", row: 0, col: 3 },
+                    { type: "Target", direction: ["left"], trains: ["Red", "Red", "Red", "Red", "Red", "Red"], row: 0, col: 6 },
+                    { type: "Splitter", direction: "bottom", row: 2, col: 3 },
+                    { type: "Splitter", direction: "bottom", row: 4, col: 3 },
+                    { type: "Rock", row: 5, col: 1 },
+                    { type: "Rock", row: 5, col: 5 },
+                    { type: "Source", direction: "top", trains: ["Red"], row: 6, col: 0 },
+                    { type: "Rock", row: 6, col: 2 },
+                    { type: "Source", direction: "top", trains: ["Red"], row: 6, col: 3 },
+                    { type: "Rock", row: 6, col: 4 },
+                    { type: "Source", direction: "top", trains: ["Red"], row: 6, col: 6 }
+                ]
+            }
+        ]
+    },
+    {
+        name: "Cooksville",
+        difficulty: 500,
+        puzzles: [
+            {
+                name: "Re-color",
+                difficulty: 6,
+                cells: [
+                    { type: "Source", direction: "bottom", trains: ["Brown", "Brown", "Brown"], row: 0, col: 0 },
+                    { type: "Source", direction: "bottom", trains: ["Brown", "Brown", "Brown"], row: 0, col: 1 },
+                    { type: "Source", direction: "bottom", trains: ["Brown", "Brown", "Brown"], row: 0, col: 2 },
+                    { type: "Source", direction: "bottom", trains: ["Brown", "Brown", "Brown"], row: 0, col: 4 },
+                    { type: "Source", direction: "bottom", trains: ["Brown", "Brown", "Brown"], row: 0, col: 5 },
+                    { type: "Source", direction: "bottom", trains: ["Brown", "Brown", "Brown"], row: 0, col: 6 },
+                    { type: "Paint", direction: "vertical", color: "Blue", row: 3, col: 0 },
+                    { type: "Paint", direction: "vertical", color: "Red", row: 3, col: 1 },
+                    { type: "Paint", direction: "vertical", color: "Red", row: 3, col: 2 },
+                    { type: "Paint", direction: "vertical", color: "Yellow", row: 3, col: 4 },
+                    { type: "Paint", direction: "vertical", color: "Yellow", row: 3, col: 5 },
+                    { type: "Paint", direction: "vertical", color: "Blue", row: 3, col: 6 },
+                    { type: "Target", direction: ["top", "left", "right"], trains: ["Purple", "Purple", "Purple", "Purple"], row: 6, col: 1 },
+                    { type: "Target", direction: ["top", "left", "right"], trains: ["Orange", "Orange", "Orange"], row: 6, col: 3 },
+                    { type: "Target", direction: ["top", "left", "right"], trains: ["Green", "Green", "Green", "Green"], row: 6, col: 5 }
+                ]
+            },
+            {
+                name: "Tight Parking",
+                difficulty: 12,
+                cells: [
+                    { type: "Target", direction: ["bottom"], trains: ["Red"], row: 0, col: 2 },
+                    { type: "Target", direction: ["bottom"], trains: ["Green"], row: 0, col: 3 },
+                    { type: "Target", direction: ["bottom"], trains: ["Orange"], row: 0, col: 4 },
+                    { type: "Target", direction: "top", trains: ["Yellow"], row: 3, col: 2 },
+                    { type: "Target", direction: "top", trains: ["Purple"], row: 3, col: 3 },
+                    { type: "Target", direction: "top", trains: ["Blue"], row: 3, col: 4 },
+                    { type: "Source", direction: "top", trains: ["Orange"], row: 6, col: 0 },
+                    { type: "Source", direction: "top", trains: ["Blue"], row: 6, col: 1 },
+                    { type: "Source", direction: "top", trains: ["Purple"], row: 6, col: 2 },
+                    { type: "Source", direction: "top", trains: ["Green"], row: 6, col: 4 },
+                    { type: "Source", direction: "top", trains: ["Yellow"], row: 6, col: 5 },
+                    { type: "Source", direction: "top", trains: ["Red"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Emerald Chaos",
+                difficulty: 12,
+                cells: [
+                    { type: "Rock", row: 0, col: 2 },
+                    { type: "Source", direction: "bottom", trains: ["Green"], row: 0, col: 3 },
+                    { type: "Rock", row: 0, col: 4 },
+                    { type: "Rock", row: 0, col: 5 },
+                    { type: "Source", direction: "bottom", trains: ["Purple"], row: 0, col: 6 },
+                    { type: "Target", direction: "top", trains: ["Blue", "Blue", "Purple"], row: 1, col: 1 },
+                    { type: "Target", direction: "top", trains: ["Yellow"], row: 2, col: 3 },
+                    { type: "Rock", row: 2, col: 6 },
+                    { type: "Source", direction: "top", trains: ["Green"], row: 3, col: 2 },
+                    { type: "Rock", row: 3, col: 3 },
+                    { type: "Source", direction: "top", trains: ["Green"], row: 3, col: 4 },
+                    { type: "Splitter", direction: "bottom", row: 4, col: 3 },
+                    { type: "Rock", row: 6, col: 5 },
+                    { type: "Rock", row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Backup",
+                difficulty: 13,
+                cells: [
+                    { type: "Target", direction: ["left"], trains: ["Orange"], row: 0, col: 3 },
+                    { type: "Target", direction: ["left"], trains: ["Orange"], row: 1, col: 3 },
+                    { type: "Splitter", direction: "right", row: 2, col: 0 },
+                    { type: "Rock", row: 2, col: 6 },
+                    { type: "Target", direction: "top", trains: ["Blue", "Blue"], row: 3, col: 0 },
+                    { type: "Rock", row: 3, col: 1 },
+                    { type: "Source", direction: "left", trains: ["Red", "Yellow"], row: 3, col: 6 },
+                    { type: "Source", direction: "top", trains: ["Blue"], row: 5, col: 0 },
+                    { type: "Rock", row: 5, col: 1 },
+                    { type: "Rock", row: 5, col: 2 },
+                    { type: "Rock", row: 6, col: 2 },
+                    { type: "Source", direction: "top", trains: ["Blue"], row: 6, col: 4 }
+                ]
+            },
+            {
+                name: "Rotoria",
+                difficulty: 21,
+                cells: [
+                    { type: "Target", direction: ["bottom"], trains: ["Blue"], row: 0, col: 0 },
+                    { type: "Target", direction: ["bottom"], trains: ["Blue"], row: 0, col: 6 },
+                    { type: "Splitter", direction: "left", row: 1, col: 3 },
+                    { type: "Rock", row: 3, col: 0 },
+                    { type: "Paint", direction: "vertical", color: "Green", row: 3, col: 1 },
+                    { type: "Rock", row: 3, col: 2 },
+                    { type: "Rock", row: 3, col: 3 },
+                    { type: "Rock", row: 3, col: 4 },
+                    { type: "Paint", direction: "vertical", color: "Purple", row: 3, col: 5 },
+                    { type: "Rock", row: 3, col: 6 },
+                    { type: "Splitter", direction: "right", row: 5, col: 3 },
+                    { type: "Target", direction: "top", trains: ["Green", "Red"], row: 6, col: 0 },
+                    { type: "Source", direction: "top", trains: ["Brown"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Loop De Paint",
+                difficulty: 22,
+                cells: [
+                    { type: "Source", direction: "left", trains: ["Brown"], row: 0, col: 6 },
+                    { type: "Splitter", direction: "right", row: 1, col: 0 },
+                    { type: "Rock", row: 2, col: 1 },
+                    { type: "Target", direction: "top", trains: ["Yellow", "Yellow", "Blue", "Blue", "Purple"], row: 2, col: 2 },
+                    { type: "Rock", row: 2, col: 3 },
+                    { type: "Rock", row: 3, col: 3 },
+                    { type: "Paint", direction: "horizontal", color: "Purple", row: 4, col: 3 },
+                    { type: "Paint", direction: "horizontal", color: "Orange", row: 5, col: 3 },
+                    { type: "Paint", direction: "horizontal", color: "Green", row: 6, col: 3 }
+                ]
+            },
+            {
+                name: "Seven Sisters",
+                difficulty: 23,
+                cells: [
+                    { type: "Paint", direction: "bottom-right", color: "Red", row: 0, col: 0 },
+                    { type: "Paint", direction: "bottom-left", color: "Blue", row: 0, col: 6 },
+                    { type: "Splitter", direction: "left", row: 2, col: 3 },
+                    { type: "Splitter", direction: "right", row: 3, col: 0 },
+                    { type: "Target", direction: ["top", "left", "bottom", "right"], trains: ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Brown"], row: 3, col: 3 },
+                    { type: "Splitter", direction: "right", row: 4, col: 3 },
+                    { type: "Source", direction: "top", trains: ["Brown"], row: 6, col: 0 },
+                    { type: "Paint", direction: "top-left", color: "Yellow", row: 6, col: 6 }
+                ]
+            }
+        ]
+    },
+    {
+        name: "Erindale",
+        difficulty: 500,
+        puzzles: [
+            {
+                name: "Crossover²",
+                difficulty: 4,
+                cells: [
+                    { type: "Rock", row: 0, col: 0 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 0, col: 1 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 0, col: 2 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 0, col: 3 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 0, col: 4 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 0, col: 5 },
+                    { type: "Target", direction: ["bottom"], trains: ["Green", "Green", "Green", "Green", "Green", "Green", "Green", "Green", "Green"], row: 0, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 1, col: 0 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 2, col: 0 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 3, col: 0 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 4, col: 0 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 5, col: 0 },
+                    { type: "Target", direction: ["right"], trains: ["Green"], row: 6, col: 0 }
+                ]
+            },
+            {
+                name: "Kenzie",
+                difficulty: 6,
+                cells: [
+                    { type: "Source", direction: "bottom", trains: ["Red", "Yellow", "Blue", "Red", "Yellow", "Blue"], row: 0, col: 0 },
+                    { type: "Paint", direction: "horizontal", color: "Blue", row: 1, col: 3 },
+                    { type: "Paint", direction: "horizontal", color: "Yellow", row: 3, col: 3 },
+                    { type: "Paint", direction: "horizontal", color: "Red", row: 5, col: 3 },
+                    { type: "Target", direction: ["top", "left"], trains: ["Red", "Orange", "Yellow", "Green", "Blue", "Purple"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Vanishing Purple",
+                difficulty: 10,
+                cells: [
+                    { type: "Source", direction: "bottom", trains: ["Green"], row: 0, col: 1 },
+                    { type: "Source", direction: "bottom", trains: ["Purple"], row: 0, col: 3 },
+                    { type: "Source", direction: "bottom", trains: ["Orange"], row: 0, col: 5 },
+                    { type: "Splitter", direction: "bottom", row: 3, col: 3 },
+                    { type: "Target", direction: "top", trains: ["Orange"], row: 6, col: 0 },
+                    { type: "Target", direction: "top", trains: ["Green"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Overload",
+                difficulty: 15,
+                cells: [
+                    { type: "Target", direction: ["right"], trains: ["Orange", "Green", "Blue"], row: 0, col: 0 },
+                    { type: "Paint", direction: "vertical", color: "Yellow", row: 2, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Brown", "Brown", "Brown"], row: 3, col: 0 },
+                    { type: "Paint", direction: "horizontal", color: "Red", row: 3, col: 5 },
+                    { type: "Paint", direction: "vertical", color: "Blue", row: 4, col: 6 }
+                ]
+            },
+            {
+                name: "Painter's Cross",
+                difficulty: 25,
+                cells: [
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 0, col: 0 },
+                    { type: "Paint", direction: "vertical", color: "Orange", row: 2, col: 3 },
+                    { type: "Paint", direction: "horizontal", color: "Red", row: 3, col: 2 },
+                    { type: "Paint", direction: "horizontal", color: "Green", row: 3, col: 4 },
+                    { type: "Splitter", direction: "left", row: 3, col: 6 },
+                    { type: "Paint", direction: "vertical", color: "Yellow", row: 4, col: 3 },
+                    { type: "Target", direction: "top", trains: ["Red", "Orange", "Yellow", "Green"], row: 6, col: 0 }
+                ]
+            },
+            {
+                name: "Xaphadipre",
+                difficulty: 13,
+                cells: [
+                    { type: "Rock", row: 0, col: 0 },
+                    { type: "Rock", row: 0, col: 5 },
+                    { type: "Target", direction: ["bottom"], trains: ["Yellow"], row: 0, col: 6 },
+                    { type: "Source", direction: "right", trains: ["Yellow"], row: 1, col: 0 },
+                    { type: "Splitter", direction: "left", row: 1, col: 1 },
+                    { type: "Rock", row: 1, col: 2 },
+                    { type: "Rock", row: 1, col: 3 },
+                    { type: "Rock", row: 1, col: 5 },
+                    { type: "Rock", row: 2, col: 0 },
+                    { type: "Splitter", direction: "top", row: 2, col: 4 },
+                    { type: "Splitter", direction: "left", row: 2, col: 6 },
+                    { type: "Rock", row: 3, col: 3 },
+                    { type: "Rock", row: 3, col: 4 },
+                    { type: "Rock", row: 3, col: 5 },
+                    { type: "Target", direction: ["bottom"], trains: ["Green"], row: 4, col: 0 },
+                    { type: "Source", direction: "left", trains: ["Blue"], row: 6, col: 1 }
+                ]
+            },
+            {
+                name: "Rainbow Twist",
+                difficulty: 20,
+                cells: [
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 0, col: 0 },
+                    { type: "Source", direction: "bottom", trains: ["Orange"], row: 0, col: 1 },
+                    { type: "Source", direction: "bottom", trains: ["Yellow"], row: 0, col: 2 },
+                    { type: "Rock", row: 0, col: 3 },
+                    { type: "Source", direction: "bottom", trains: ["Green"], row: 0, col: 4 },
+                    { type: "Source", direction: "bottom", trains: ["Blue"], row: 0, col: 5 },
+                    { type: "Source", direction: "bottom", trains: ["Purple"], row: 0, col: 6 },
+                    { type: "Rock", row: 1, col: 3 },
+                    { type: "Rock", row: 2, col: 3 },
+                    { type: "Rock", row: 4, col: 3 },
+                    { type: "Rock", row: 5, col: 3 },
+                    { type: "Target", direction: "top", trains: ["Purple"], row: 6, col: 0 },
+                    { type: "Target", direction: "top", trains: ["Blue"], row: 6, col: 1 },
+                    { type: "Target", direction: "top", trains: ["Green"], row: 6, col: 2 },
+                    { type: "Rock", row: 6, col: 3 },
+                    { type: "Target", direction: "top", trains: ["Yellow"], row: 6, col: 4 },
+                    { type: "Target", direction: "top", trains: ["Orange"], row: 6, col: 5 },
+                    { type: "Target", direction: "top", trains: ["Red"], row: 6, col: 6 }
+                ]
+            },
+            {
+                name: "Impossible Rainbow",
+                difficulty: 30,
+                cells: [
+                    { type: "Source", direction: "bottom", trains: ["Red"], row: 0, col: 0 },
+                    { type: "Splitter", direction: "left", row: 1, col: 1 },
+                    { type: "Paint", direction: "vertical", color: "Red", row: 1, col: 2 },
+                    { type: "Paint", direction: "vertical", color: "Yellow", row: 1, col: 3 },
+                    { type: "Paint", direction: "vertical", color: "Blue", row: 1, col: 4 },
+                    { type: "Target", direction: "top", trains: ["Red"], row: 6, col: 0 },
+                    { type: "Target", direction: "top", trains: ["Orange"], row: 6, col: 1 },
+                    { type: "Target", direction: "top", trains: ["Yellow"], row: 6, col: 2 },
+                    { type: "Target", direction: "top", trains: ["Green"], row: 6, col: 3 },
+                    { type: "Target", direction: "top", trains: ["Blue"], row: 6, col: 4 },
+                    { type: "Target", direction: "top", trains: ["Purple"], row: 6, col: 5 },
+                    { type: "Target", direction: "top", trains: ["Red"], row: 6, col: 6 }
+                ]
+            }
         ]
     }
 ];

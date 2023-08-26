@@ -1,15 +1,15 @@
-import { createContext, useCallback, useContext, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { Coordinate, Game, GameCell, PaintGameCell, SourceGameCell, SplitterGameCell, TargetGameCell, TrackDirection, TrainColor, TrainDirection } from '../Game/Game';
 import { findLevelByName, Puzzle } from '../Game/Levels';
+import Button, { ButtonColumn } from './Button';
 import Canvas from './Canvas';
-import GameContext, { BuildContext, CellEvent, GameSetterContext } from './GameContext';
-import styles from './LevelEditor.module.scss';
 import PaintCell, { getDirections } from './Cells/PaintCell';
 import SourceCell from './Cells/SourceCell';
 import SplitterCell from './Cells/SplitterCell';
 import TargetCell from './Cells/TargetCell';
-import Button, { ButtonColumn } from './Button';
 import { Footer } from './Dialog';
+import GameContext, { BuildContext, CellEvent, GameSetterContext } from './GameContext';
+import styles from './LevelEditor.module.scss';
 
 export const SelectedCellContext = createContext<Coordinate | undefined>(undefined);
 
@@ -50,8 +50,8 @@ function ColorEditor({ selected, onClick }: { selected?: TrainColor, onClick: (c
                 <Button className={`${styles.hexagonButton} ${styles.yellow} ${maybeSelected('Yellow')}`} onClick={() => onClick('Yellow')} />
             </div>
             <div className={styles.hexagonRow}>
-                <Button className={`${styles.hexagonButton} ${styles.green} ${maybeSelected('Green')}`} onClick={() => onClick('Green')} />
                 <Button className={`${styles.hexagonButton} ${styles.blue} ${maybeSelected('Blue')}`} onClick={() => onClick('Blue')} />
+                <Button className={`${styles.hexagonButton} ${styles.green} ${maybeSelected('Green')}`} onClick={() => onClick('Green')} />
             </div>
         </div>
     );
@@ -289,6 +289,34 @@ export default function LevelEditor() {
         if (e.type === "click") {
             setSelectedCell(game.getCoordinate(e.cell));
         }
+    }, [game, setSelectedCell]);
+
+    useEffect(() => {
+        //Allow changing cells w/ arrow keys
+        const handleArrows = (event: KeyboardEvent) => {
+            setSelectedCell(cell => {
+                if (!cell)
+                    return cell;
+
+                const newCell = { ...cell };
+                if (event.key === "ArrowUp") {
+                    newCell.row > 0 && newCell.row--;
+                } else if (event.key === "ArrowDown") {
+                    newCell.row < game.height - 1 && newCell.row++;
+                } else if (event.key === "ArrowLeft") {
+                    newCell.col > 0 && newCell.col--;
+                } else if (event.key === "ArrowRight") {
+                    newCell.col < game.width - 1 && newCell.col++;
+                }
+
+                return newCell;
+            });
+        };
+
+        document.addEventListener("keydown", handleArrows);
+        return () => {
+            document.removeEventListener("keydown", handleArrows);
+        };
     }, [game, setSelectedCell]);
 
     const replaceCell = (newType: GameCell["type"]) => {
