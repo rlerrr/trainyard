@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/trainyard/static/css/main.f81b4304.css",
+    "main.js": "/trainyard/static/js/main.67f27237.js",
+    "index.html": "/trainyard/index.html",
+    "main.f81b4304.css.map": "/trainyard/static/css/main.f81b4304.css.map",
+    "main.67f27237.js.map": "/trainyard/static/js/main.67f27237.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f81b4304.css",
+    "static/js/main.67f27237.js"
+  ]
+}
