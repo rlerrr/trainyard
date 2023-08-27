@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/trainyard/static/css/main.f81b4304.css",
-    "main.js": "/trainyard/static/js/main.67f27237.js",
+    "main.css": "/trainyard/static/css/main.547a9c90.css",
+    "main.js": "/trainyard/static/js/main.98ede881.js",
     "index.html": "/trainyard/index.html",
-    "main.f81b4304.css.map": "/trainyard/static/css/main.f81b4304.css.map",
-    "main.67f27237.js.map": "/trainyard/static/js/main.67f27237.js.map"
+    "main.547a9c90.css.map": "/trainyard/static/css/main.547a9c90.css.map",
+    "main.98ede881.js.map": "/trainyard/static/js/main.98ede881.js.map"
   },
   "entrypoints": [
-    "static/css/main.f81b4304.css",
-    "static/js/main.67f27237.js"
+    "static/css/main.547a9c90.css",
+    "static/js/main.98ede881.js"
   ]
 }
