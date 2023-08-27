@@ -1,12 +1,13 @@
 {
   "name": "trainyard",
   "version": "0.1.0",
+  "homepage": "https://rlerrr.github.io/trainyard",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",    
+    "@types/jest": "^27.5.2",
     "@types/lodash": "^4.14.195",
     "@types/node": "^16.18.38",
     "@types/react": "^18.2.15",
@@ -21,6 +22,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "react-scripts build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -43,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.0.0"
   }
 }
