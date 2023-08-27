@@ -74,9 +74,13 @@ function Cell({ cell }: { cell: Readonly<GameCell> }) {
     function pointerDown(event: React.PointerEvent) {
         if (event.target instanceof HTMLElement && event.pointerType === 'touch') {
             isDragging.current = true;
-            //event.target.setPointerCapture(event.pointerId);
             lastTarget.current = event.target;
         }
+    };
+
+    function pointerUp() {
+        isDragging.current = false;
+        lastTarget.current = null;
     };
 
     function pointerMove(e: React.PointerEvent) {
@@ -121,6 +125,7 @@ function Cell({ cell }: { cell: Readonly<GameCell> }) {
         <div
             className={`${styles.cell} ${selectedCell && cellCoordinate && selectedCell.col === cellCoordinate.col && selectedCell.row === cellCoordinate.row ? styles.selected : ''}`}
             onPointerDown={pointerDown}
+            onPointerUp={pointerUp}
             onPointerMove={pointerMove}
             onClick={click}
             ref={setCellRef}>
