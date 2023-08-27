@@ -49,7 +49,7 @@ function GameCanvas({ mode, setMode }: { mode: Mode, setMode: (value: Mode) => v
                     <Footer>
                         <Status />
                         <ButtonColumn>
-                            <Button onClick={() => setMode("Build")}>Back to the drawing board!</Button>
+                            <Button onClick={() => setMode("Build")}>Stop!</Button>
                             <Speed />
                         </ButtonColumn>
                     </Footer>
@@ -106,9 +106,7 @@ function EraseMode({ setMode }: { setMode: (value: Mode) => void }) {
 
     return (
         <BuildContext.Provider value={onCellEvent}>
-            <div className={styles.erasing}>
-                <Canvas />
-            </div>
+            <Canvas className={styles.erasing} />
 
             <Footer>
                 <ButtonColumn>

@@ -10,10 +10,7 @@
     font-size: 0;
     line-height: 0;
 
-    /* Don't pan/zoom while drawing track */
     touch-action: none;
-
-    /* Don't select anything while drawing track */
     user-select: none;
 }
 

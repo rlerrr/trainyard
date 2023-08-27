@@ -84,8 +84,7 @@ function Cell({ cell }: { cell: Readonly<GameCell> }) {
             //Detecting mouseEnter
             enterEdge.current = detectEdge(getMotionLineSegment(e.nativeEvent), e.target);
 
-            //TODO: This works OK but doesn't accurately detect mouseEnter
-            if (e.pointerType === 'touch' && !enterEdge.current) {
+            if (e.pointerType === 'touch' && !enterEdge.current && !isDragging.current) {
                 const rect = e.target.getBoundingClientRect();
                 const { clientX, clientY, movementX, movementY } = e;
                 enterEdge.current = getClosestEdge(rect, { x: clientX - movementX, y: clientY - movementY });
@@ -139,12 +138,12 @@ function Row({ row }: { row: ReadonlyArray<GameCell> }) {
     );
 }
 
-export default function Canvas() {
+export default function Canvas({ className }: { className?: string }) {
     const game = useContext(GameContext);
     const { grid } = game;
 
     return (
-        <div className={styles.wrapper}>
+        <div className={`${styles.wrapper} ${className ?? ''}`}>
             <div className={styles.container}>
                 {grid.map((r, i) => <Row key={i} row={r} />)}
             </div>
