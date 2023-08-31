@@ -87,6 +87,7 @@ export default function LevelSelect({ setMode }: { setMode: (value: Mode) => voi
     const onLevelSelected = (level: Puzzle, solution: Solution | null) => {
         let newGame = solution ? loadSolution(solution) : undefined;
         newGame = newGame ?? buildGame(level.name, level.cells);
+        newGame.ticksPerBlock = game.ticksPerBlock;
         setGame(newGame);
 
         if (getQuery().edit !== undefined) {

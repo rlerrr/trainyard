@@ -15,7 +15,7 @@ export function PlusIcon({ x, y, diameter, color }: IconProps) {
     if (!color)
         return null;
 
-    const sizeDiff = diameter * .33333;
+    const sizeDiff = diameter * .25;
 
     return (
         <>

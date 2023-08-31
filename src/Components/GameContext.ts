@@ -28,6 +28,6 @@ export type CellEvent = CellMouseThroughEvent | CellClickEvent | CellMouseEnterE
 
 export type CellEventHandler = (e: CellEvent) => void;
 
-export const GameSetterContext = createContext((game: Game) => { });
+export const GameSetterContext = createContext<React.Dispatch<React.SetStateAction<Game | undefined>>>(() => { });
 
 export const BuildContext = createContext<CellEventHandler>(() => { });
