@@ -1710,7 +1710,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
                 cells: [
                     { type: "Target", direction: ["right"], trains: ["Yellow"], row: 0, col: 0 },
                     { type: "Target", direction: ["right"], trains: ["Blue", "Red", "Yellow", "Blue", "Red", "Yellow"], row: 1, col: 0 },
-                    { type: "Splitter", direction: "top", row: 1, col: 1 },
+                    { type: "Splitter", direction: "bottom", row: 1, col: 1 },
                     { type: "Paint", direction: "vertical", color: "Red", row: 3, col: 4 },
                     { type: "Paint", direction: "vertical", color: "Yellow", row: 3, col: 5 },
                     { type: "Paint", direction: "vertical", color: "Blue", row: 4, col: 4 },
@@ -1970,7 +1970,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
                 difficulty: 11,
                 cells: [
                     { type: "Target", direction: "top", trains: ["Purple"], row: 1, col: 3 },
-                    { type: "Source", direction: "top", trains: ["Yellow"], row: 2, col: 2 },
+                    { type: "Source", direction: "top", trains: ["Yellow", "Yellow"], row: 2, col: 2 },
                     { type: "Rock", row: 2, col: 3 },
                     { type: "Source", direction: "top", trains: ["Red", "Red"], row: 2, col: 4 },
                     { type: "Rock", row: 3, col: 1 },
