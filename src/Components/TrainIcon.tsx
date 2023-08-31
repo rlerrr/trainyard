@@ -125,7 +125,7 @@ export function getIconColor(trainColor: TrainColor) {
         case "Green":
             return "lime";
         case "Blue":
-            return "rgb(0,55,255)";
+            return "#1B51CC";
         case "Purple":
             return "blueviolet";
         case "Brown":

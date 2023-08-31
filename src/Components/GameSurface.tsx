@@ -1,6 +1,8 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import _ from 'lodash';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Game, GameState } from '../Game/Game';
 import { saveSolution } from '../Game/Storage';
+import { Undo, UndoContext, UndoState } from '../Game/Undo';
 import Button, { ButtonColumn } from './Button';
 import Canvas from './Canvas';
 import Dialog, { Footer, Header } from './Dialog';
@@ -64,15 +66,23 @@ function GameCanvas({ mode, setMode }: { mode: Mode, setMode: (value: Mode) => v
     }
 }
 
+function UndoButton() {
+    const undoCtx = useContext(UndoContext);
+    const doUndo = useMemo(() => undoCtx.undo.bind(undoCtx), [undoCtx]);
+
+    return <Button disabled={!undoCtx.canUndo} onClick={doUndo}>Undo</Button>;
+}
+
 function BuildMode({ setMode }: { setMode: (value: Mode) => void }) {
-    const game = useContext(GameContext);
     const setGame = useContext(GameSetterContext);
     const onCellEvent = useCallback((e: CellEvent) => {
         if (e.type === "mouseThrough") {
-            const newGame = game?.drawTrack(e.cell, e.enterEdge, e.exitEdge);
-            newGame && setGame(newGame);
+            setGame(game => {
+                const newGame = game?.drawTrack(e.cell, e.enterEdge, e.exitEdge);
+                return newGame ?? game;
+            });
         }
-    }, [game, setGame]);
+    }, [setGame]);
 
     return (
         <BuildContext.Provider value={onCellEvent}>
@@ -81,7 +91,7 @@ function BuildMode({ setMode }: { setMode: (value: Mode) => void }) {
             <Footer>
                 <ButtonColumn>
                     <Button buttonColor="yellow" onClick={() => setMode("Erase")}>Erase</Button>
-                    <Button disabled>Undo</Button>
+                    <UndoButton />
                 </ButtonColumn>
                 <ButtonColumn>
                     <Button onClick={() => setMode("Run")} buttonColor="green">Start the trains!</Button>
@@ -93,16 +103,17 @@ function BuildMode({ setMode }: { setMode: (value: Mode) => void }) {
 }
 
 function EraseMode({ setMode }: { setMode: (value: Mode) => void }) {
-    const game = useContext(GameContext);
     const setGame = useContext(GameSetterContext);
     const onCellEvent = useCallback((e: CellEvent) => {
         if (e.type === "mouseEnter" || e.type === "click") {
             if (e.cell.type === "Intersection" || e.cell.type === "Track") {
-                const newGame = game?.replaceCell(e.cell, { type: "Empty" });
-                newGame && setGame(newGame);
+                setGame(game => {
+                    const newGame = game?.replaceCell(e.cell, { type: "Empty" });
+                    return newGame ?? game;
+                });
             }
         }
-    }, [game, setGame]);
+    }, [setGame]);
 
     return (
         <BuildContext.Provider value={onCellEvent}>
@@ -111,7 +122,7 @@ function EraseMode({ setMode }: { setMode: (value: Mode) => void }) {
             <Footer>
                 <ButtonColumn>
                     <Button buttonColor="yellow" onClick={() => setMode("Build")}>Stop Erasing</Button>
-                    <Button disabled>Undo</Button>
+                    <UndoButton />
                 </ButtonColumn>
                 <ButtonColumn>
                     <Button onClick={() => setMode("Run")} buttonColor="green">Start the trains!</Button>
@@ -122,6 +133,70 @@ function EraseMode({ setMode }: { setMode: (value: Mode) => void }) {
     );
 }
 
+function UndoContextProvider({ children, setGame }: { children: React.ReactNode, setGame: React.Dispatch<React.SetStateAction<Game | undefined>> }) {
+    const [state, setState] = useState<UndoState>({ inx: 0, history: [] });
+    const doUndo: React.Dispatch<React.SetStateAction<UndoState>> = useCallback((value: React.SetStateAction<UndoState>) => {
+        if (typeof value === 'function') {
+            setState(prevState => {
+                const newState = value(prevState);
+
+                const gridData = newState.history[newState.history.length - newState.inx - 1].data;
+                if (gridData) {
+                    setGame(g => g ? new Game(g.level, JSON.parse(gridData), g.ticksPerBlock) : undefined);
+                }
+
+                return newState;
+            })
+        } else {
+            const gridData = value.history[value.history.length - value.inx - 1].data;
+            if (gridData) {
+                setGame(g => g ? new Game(g.level, JSON.parse(gridData), g.ticksPerBlock) : undefined);
+            }
+            setState(value);
+        }
+    }, [setState, setGame]);
+
+    const undoCtx = useMemo(() => new Undo(state, doUndo), [state, doUndo])
+
+    const undoableSetGame: React.Dispatch<React.SetStateAction<Game | undefined>> = useCallback((value: React.SetStateAction<Game | undefined>) => {
+        if (typeof value === 'function') {
+            setGame(prevState => {
+                const newState = value(prevState);
+                if (newState === undefined) {
+                    setState({ inx: 0, history: [] });
+                } else {
+                    undoCtx.push(JSON.stringify(newState.grid));
+                }
+                return newState;
+            });
+        } else if (value === undefined) {
+            setState({ inx: 0, history: [] });
+            setGame(value);
+        } else {
+            undoCtx.push(JSON.stringify(value.grid));
+            setGame(value);
+        }
+    }, [setGame, setState, undoCtx]);
+
+    const game = useContext(GameContext);
+    useEffect(() => {
+        //Reset undo state when switching levels
+        setState({
+            inx: 0,
+            history: [{
+                time: new Date(),
+                data: JSON.stringify(game.grid)
+            }]
+        });
+    }, [game.level, setState]);
+
+    return (
+        <GameSetterContext.Provider value={undoableSetGame}>
+            <UndoContext.Provider value={undoCtx}>{children}</UndoContext.Provider>
+        </GameSetterContext.Provider>
+    );
+}
+
 export default function GameSurface() {
     const [game, setGame] = useState<Game>();
     const [mode, setMode] = useState<Mode>("Build");
@@ -129,18 +204,18 @@ export default function GameSurface() {
     if (mode === "LevelSelect" || game === undefined) {
         return (
             <GameContext.Provider value={game ?? defaultGame}>
-                <GameSetterContext.Provider value={setGame}>
+                <UndoContextProvider setGame={setGame}>
                     <Dialog>
                         <LevelSelect setMode={setMode} />
                     </Dialog>
-                </GameSetterContext.Provider>
+                </UndoContextProvider>
             </GameContext.Provider>
         );
     }
 
     return (
         <GameContext.Provider value={game}>
-            <GameSetterContext.Provider value={setGame}>
+            <UndoContextProvider setGame={setGame}>
                 <Dialog>
                     <Header>
                         <Button onClick={() => setMode("LevelSelect")}>&#xab; Back</Button>
@@ -152,7 +227,7 @@ export default function GameSurface() {
 
                     {mode === "Complete" && <LevelComplete setMode={setMode} />}
                 </Dialog>
-            </GameSetterContext.Provider>
+            </UndoContextProvider>
         </GameContext.Provider>
     );
 }

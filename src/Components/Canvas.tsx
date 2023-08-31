@@ -72,7 +72,7 @@ function Cell({ cell }: { cell: Readonly<GameCell> }) {
     }, [cell, cellRef, onBuildEvent, enterEdge]);
 
     function pointerDown(event: React.PointerEvent) {
-        if (event.target instanceof HTMLElement && event.pointerType === 'touch') {
+        if (event.target instanceof HTMLElement) {
             isDragging.current = true;
             lastTarget.current = event.target;
         }
@@ -88,7 +88,8 @@ function Cell({ cell }: { cell: Readonly<GameCell> }) {
             //Detecting mouseEnter
             enterEdge.current = detectEdge(getMotionLineSegment(e.nativeEvent), e.target);
 
-            if (e.pointerType === 'touch' && !enterEdge.current && !isDragging.current) {
+            if (!enterEdge.current && !isDragging.current) {
+                //This works ok but isn't as accurate
                 const rect = e.target.getBoundingClientRect();
                 const { clientX, clientY, movementX, movementY } = e;
                 enterEdge.current = getClosestEdge(rect, { x: clientX - movementX, y: clientY - movementY });

@@ -19,6 +19,7 @@ export default function LevelComplete({ setMode }: { setMode: (value: Mode) => v
         const solution = getSolution(level);
         let newGame = solution ? loadSolution(solution) : undefined;
         newGame = newGame ?? buildGame(level.name, level.cells);
+        newGame.ticksPerBlock = game.ticksPerBlock;
         setGame(newGame);
 
         setMode("Build");

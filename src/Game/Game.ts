@@ -577,7 +577,7 @@ export class Game {
             const newRow = [...newGrid[coord.row]];
             newRow[coord.col] = newCell;
             newGrid[coord.row] = newRow;
-            return new Game(this.level, newGrid);
+            return new Game(this.level, newGrid, this.ticksPerBlock);
         }
         return undefined;
     }
