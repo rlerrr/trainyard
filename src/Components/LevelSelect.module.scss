@@ -1,0 +1,16 @@
+.row {
+    gap: 16px;
+
+    button {
+        min-width: 96px;
+    }
+
+    *:first-child {
+        flex: 1;
+    }
+}
+
+.preview {
+    width: 56px;
+    height: 56px;
+}

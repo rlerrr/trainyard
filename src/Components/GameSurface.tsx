@@ -1,6 +1,6 @@
-import _ from 'lodash';
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Game, GameState } from '../Game/Game';
+import { findLevelByName } from '../Game/Levels';
 import { saveSolution } from '../Game/Storage';
 import { Undo, UndoContext, UndoState } from '../Game/Undo';
 import Button, { ButtonColumn } from './Button';
@@ -199,9 +199,10 @@ function UndoContextProvider({ children, setGame }: { children: React.ReactNode,
 
 export default function GameSurface() {
     const [game, setGame] = useState<Game>();
+    const level = useMemo(() => game?.level ? findLevelByName(game.level) : undefined, [game?.level]);
     const [mode, setMode] = useState<Mode>("Build");
 
-    if (mode === "LevelSelect" || game === undefined) {
+    if (mode === "LevelSelect" || game === undefined || level === undefined) {
         return (
             <GameContext.Provider value={game ?? defaultGame}>
                 <UndoContextProvider setGame={setGame}>
@@ -220,7 +221,7 @@ export default function GameSurface() {
                     <Header>
                         <Button onClick={() => setMode("LevelSelect")}>&#xab; Back</Button>
 
-                        <h1>{game.level}</h1>
+                        <h1>{game.level} {level.difficulty}&#x2605;</h1>
                     </Header>
 
                     <GameCanvas mode={mode} setMode={setMode} />

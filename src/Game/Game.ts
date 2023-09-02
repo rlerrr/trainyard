@@ -440,11 +440,8 @@ export class Game {
                 //Check for cross intersection
                 const cell = this.getCell(t[0]);
                 if (cell.type === "Intersection") {
-                    //Check for crossover
-                    const { track1, track2 } = cell;
-                    if ((track1 === "vertical" && track2 === "horizontal") || (track1 === "horizontal" && track2 === "vertical")) {
+                    if (isCross(cell))
                         return true;
-                    }
                 }
 
                 return false;
@@ -514,7 +511,7 @@ export class Game {
 
         for (const train of this.state.trains) {
             const cell = this.getCell(train);
-            if (cell.type === "Intersection") {
+            if (cell.type === "Intersection" && !isCross(cell)) {
                 toFlip.push(cell);
             }
         }
@@ -647,4 +644,10 @@ function getEdge(t: Train): string {
     }
 
     return `${position.col}:${position.row}`;
+}
+
+/** Check if an intersection is a cross */
+function isCross(cell: IntersectionGameCell) {
+    const { track1, track2 } = cell;
+    return (track1 === "vertical" && track2 === "horizontal") || (track1 === "horizontal" && track2 === "vertical");
 }

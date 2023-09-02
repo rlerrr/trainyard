@@ -4,9 +4,11 @@ import { Game } from "../Game/Game";
 import { buildGame, Puzzle, PuzzleGroup, puzzleGroups } from "../Game/Levels";
 import { getSolution, loadSolution, Solution } from "../Game/Storage";
 import Button from "./Button";
+import Canvas from "./Canvas";
 import { Header, Row } from "./Dialog";
 import GameContext, { GameSetterContext } from "./GameContext";
 import { Mode } from "./GameSurface";
+import styles from "./LevelSelect.module.scss";
 
 function getTotalPoints() {
     const allPuzzles = puzzleGroups.flatMap(g => g.puzzles);
@@ -50,6 +52,7 @@ function LevelGroup({ group, setGroup }: { group: PuzzleGroup, setGroup: React.D
 function Level({ level, onLevelSelected }: { level: Puzzle, onLevelSelected: (level: Puzzle, solution: Solution | null) => void }) {
     const solution = getSolution(level);
     const solved = solution?.status === "Complete";
+    const game = useMemo(() => buildGame(level.name, level.cells), [level]);
 
     let button;
     if (solved) {
@@ -59,9 +62,12 @@ function Level({ level, onLevelSelected }: { level: Puzzle, onLevelSelected: (le
     }
 
     return (
-        <Row>
-            <h1>{level.name}</h1>
-            {button}
+        <Row className={styles.row}>
+            <GameContext.Provider value={game}>
+                <h1>{level.name}</h1>
+                <div className={styles.preview}><Canvas preview /></div>
+                {button}
+            </GameContext.Provider>
         </Row>
     );
 }

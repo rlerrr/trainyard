@@ -144,12 +144,12 @@ function Row({ row }: { row: ReadonlyArray<GameCell> }) {
     );
 }
 
-export default function Canvas({ className }: { className?: string }) {
+export default function Canvas({ className, preview }: { className?: string, preview?: boolean }) {
     const game = useContext(GameContext);
     const { grid } = game;
 
     return (
-        <div className={`${styles.wrapper} ${className ?? ''}`}>
+        <div className={`${styles.wrapper} ${className ?? ''} ${preview ? styles.preview : ''}`}>
             <div className={styles.container}>
                 {grid.map((r, i) => <Row key={i} row={r} />)}
             </div>

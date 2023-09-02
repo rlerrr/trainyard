@@ -9,8 +9,8 @@ export function Footer({ children, ...props }: React.HTMLAttributes<HTMLElement>
     return <div {...props} className={styles.footer}>{children}</div>;
 }
 
-export function Row({ children }: { children: React.ReactNode }) {
-    return <div className={styles.row}>{children}</div>;
+export function Row({ children, className }: { children: React.ReactNode, className?: string }) {
+    return <div className={`${styles.row} ${className ?? ''}`}>{children}</div>;
 }
 
 export default function Dialog({ children }: { children: React.ReactNode }) {

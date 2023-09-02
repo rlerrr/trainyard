@@ -3093,6 +3093,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
         difficulty: 500,
         puzzles: [
             {
+                //The only puzzle with a duplicate name
                 name: "Crossover²",
                 difficulty: 4,
                 cells: [
@@ -3129,7 +3130,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
                     { type: "Source", direction: "bottom", trains: ["Green"], row: 0, col: 1 },
                     { type: "Source", direction: "bottom", trains: ["Purple"], row: 0, col: 3 },
                     { type: "Source", direction: "bottom", trains: ["Orange"], row: 0, col: 5 },
-                    { type: "Splitter", direction: "bottom", row: 3, col: 3 },
+                    { type: "Splitter", direction: "top", row: 3, col: 3 },
                     { type: "Target", direction: "top", trains: ["Orange"], row: 6, col: 0 },
                     { type: "Target", direction: "top", trains: ["Green"], row: 6, col: 6 }
                 ]
