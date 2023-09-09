@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { GameCell, TrainDirection } from '../Game/Game';
 import { detectEdge, getClosestEdge, getMotionLineSegment } from '../Utils/geometry';
+import useTap from '../Utils/useTap';
 import styles from './Canvas.module.scss';
 import InterSectionCell from './Cells/IntersectionCell';
 import PaintCell from './Cells/PaintCell';
@@ -48,6 +49,8 @@ function Cell({ cell }: { cell: Readonly<GameCell> }) {
 
     const isDragging = useRef<boolean>(false);
     const lastTarget = useRef<HTMLElement | null>(null);
+
+    const tap = useTap();
 
     useEffect(() => {
         if (cellRef) {
@@ -119,7 +122,10 @@ function Cell({ cell }: { cell: Readonly<GameCell> }) {
     }
 
     function click(e: React.MouseEvent) {
-        onBuildEvent({ type: "click", cell });
+        tap(e, {
+            onSingleTap: () => onBuildEvent({ type: "click", cell }),
+            onDoubleTap: () => onBuildEvent({ type: "dblclick", cell })
+        });
     }
 
     return (

@@ -1,6 +1,5 @@
 import _ from "lodash";
-import React, { useContext, useMemo, useState } from "react";
-import { Game } from "../Game/Game";
+import React, { useContext, useMemo } from "react";
 import { buildGame, Puzzle, PuzzleGroup, puzzleGroups } from "../Game/Levels";
 import { getSolution, loadSolution, Solution } from "../Game/Storage";
 import Button from "./Button";
@@ -10,8 +9,8 @@ import GameContext, { GameSetterContext } from "./GameContext";
 import { Mode } from "./GameSurface";
 import styles from "./LevelSelect.module.scss";
 
-function getTotalPoints() {
-    const allPuzzles = puzzleGroups.flatMap(g => g.puzzles);
+export function getTotalPoints() {
+    const allPuzzles = puzzleGroups.flatMap(g => g.mode === "Regular" || g.mode === "Bonus" ? g.puzzles : []);
     return _.sumBy(allPuzzles, p => {
         const s = getSolution(p);
         if (!!s && s.status === "Complete") {
@@ -49,7 +48,7 @@ function LevelGroup({ group, setGroup }: { group: PuzzleGroup, setGroup: React.D
     );
 }
 
-function Level({ level, onLevelSelected }: { level: Puzzle, onLevelSelected: (level: Puzzle, solution: Solution | null) => void }) {
+export function Level({ level, onLevelSelected }: { level: Puzzle, onLevelSelected: (level: Puzzle, solution: Solution | null) => void }) {
     const solution = getSolution(level);
     const solved = solution?.status === "Complete";
     const game = useMemo(() => buildGame(level.name, level.cells), [level]);
@@ -72,22 +71,16 @@ function Level({ level, onLevelSelected }: { level: Puzzle, onLevelSelected: (le
     );
 }
 
-function getDefaultGroup(game: Game) {
-    if (!game || !game.level)
-        return undefined;
-
-    const currentGroup = puzzleGroups.find(g => !!g.puzzles.find(l => l.name === game.level));
-    return currentGroup?.name;
+type LevelSelectProps = {
+    group: string | undefined;
+    groups: PuzzleGroup[];
+    setGroup: React.Dispatch<React.SetStateAction<string | undefined>>;
+    setMode: React.Dispatch<React.SetStateAction<Mode>>;
 }
 
-function getQuery(): { [k: string]: string | undefined } {
-    return Object.fromEntries(new URLSearchParams(window.location.search));
-}
-
-export default function LevelSelect({ setMode }: { setMode: (value: Mode) => void }) {
+export default function LevelSelect({ group, groups, setGroup, setMode }: LevelSelectProps) {
     const game = useContext(GameContext);
     const setGame = useContext(GameSetterContext);
-    const [group, setGroup] = useState<string | undefined>(() => getDefaultGroup(game));
     const totalPoints = useMemo(getTotalPoints, []);
 
     const onLevelSelected = (level: Puzzle, solution: Solution | null) => {
@@ -95,23 +88,17 @@ export default function LevelSelect({ setMode }: { setMode: (value: Mode) => voi
         newGame = newGame ?? buildGame(level.name, level.cells);
         newGame.ticksPerBlock = game.ticksPerBlock;
         setGame(newGame);
-
-        if (getQuery().edit !== undefined) {
-            setMode("Editor");
-        } else {
-            setMode("Build");
-        }
+        setMode("Build");
     }
 
-    if (group) {
-        const selectedGroup = puzzleGroups.find(g => g.name === group)!;
-
+    const selectedGroup = groups.find(g => g.name === group);
+    if (selectedGroup) {
         return (
             <>
                 <Header>
                     <Button onClick={() => setGroup(undefined)}>&#xab; Back</Button>
 
-                    <h1>{group}</h1>
+                    <h1>{selectedGroup.name}</h1>
                 </Header>
 
                 {selectedGroup.puzzles.map(p => <Level key={p.name} level={p} onLevelSelected={onLevelSelected} />)}
@@ -122,10 +109,12 @@ export default function LevelSelect({ setMode }: { setMode: (value: Mode) => voi
     return (
         <>
             <Header>
+                <Button onClick={() => setMode("Menu")}>&#xab; Back</Button>
+
                 <h1>Your Stars: {totalPoints}&#x2605;</h1>
             </Header>
 
-            {puzzleGroups.map(g => <LevelGroup key={g.name} group={g} setGroup={setGroup} />)}
+            {groups.map(g => <LevelGroup key={g.name} group={g} setGroup={setGroup} />)}
         </>
     );
 }

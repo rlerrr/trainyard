@@ -51,6 +51,7 @@
     width: 100%;
     align-items: center;
     justify-content: space-between;
+    gap: 16px;
 
     padding: 5px 0;
 
@@ -76,4 +77,11 @@
     >*:last-child {
         flex: 1 0 200px;
     }
+}
+
+.modal {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    top: 84px;
 }

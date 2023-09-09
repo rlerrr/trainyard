@@ -36,6 +36,10 @@
         border-color: cornflowerblue;
     }
 
+    &.purple {
+        border-color: darkslateblue;
+    }
+
     &[disabled] {
         cursor: default;
         color: gray;

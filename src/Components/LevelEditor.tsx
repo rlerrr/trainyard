@@ -1,13 +1,14 @@
-import { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { Coordinate, Game, GameCell, PaintGameCell, SourceGameCell, SplitterGameCell, TargetGameCell, TrackDirection, TrainColor, TrainDirection } from '../Game/Game';
-import { findLevelByName, Puzzle } from '../Game/Levels';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { Coordinate, GameCell, PaintGameCell, SourceGameCell, SplitterGameCell, TargetGameCell, TrackDirection, TrainColor, TrainDirection } from '../Game/Game';
+import { UndoContext } from '../Game/Undo';
 import Button, { ButtonColumn } from './Button';
 import Canvas from './Canvas';
 import PaintCell, { getDirections } from './Cells/PaintCell';
+import RockSvg from './Cells/RockSvg';
 import SourceCell from './Cells/SourceCell';
 import SplitterCell from './Cells/SplitterCell';
 import TargetCell from './Cells/TargetCell';
-import { Footer } from './Dialog';
+import { Footer, Header, Modal } from './Dialog';
 import GameContext, { BuildContext, CellEvent, GameSetterContext } from './GameContext';
 import styles from './LevelEditor.module.scss';
 
@@ -231,14 +232,7 @@ function SplitterEditor({ cell }: { cell: Readonly<SplitterGameCell> }) {
     );
 }
 
-function CellEditor() {
-    const game = useContext(GameContext);
-    const selectedCell = useContext(SelectedCellContext);
-
-    if (!selectedCell)
-        return null;
-
-    const cell = game.getCellAtCoordinate(selectedCell);
+function CellEditor({ cell }: { cell: GameCell }) {
     switch (cell?.type) {
         case 'Source':
             return <SourceEditor cell={cell} />;
@@ -253,37 +247,93 @@ function CellEditor() {
     return null;
 }
 
-const weirdStringify = (input: unknown, indent?: boolean): string => {
-    if (input === null)
-        return 'null';
+function CellEditorDialog({ setShowEditor }: { setShowEditor: React.Dispatch<React.SetStateAction<boolean>> }) {
+    const game = useContext(GameContext);
+    const selectedCell = useContext(SelectedCellContext);
+    const cell = selectedCell ? game.getCellAtCoordinate(selectedCell) : undefined;
 
-    if (input instanceof Date)
-        return JSON.stringify(input);
+    useEffect(() => {
+        if (!cell || cell.type === 'Empty' || cell.type === 'Rock') {
+            //Auto close dialog when selecting a cell w/ no props
+            setShowEditor(false);
+        }
+    }, [cell, setShowEditor])
 
-    // In case of an array we'll stringify all objects.
-    if (Array.isArray(input)) {
-        return `[${indent ? "\r\n" : ""}${input
-            .map(obj => `${weirdStringify(obj)}`)
-            .join(indent ? ",\r\n" : ",")
-            }${indent ? "\r\n" : ""}]`;
-    }
+    if (!cell || cell.type === 'Empty' || cell.type === 'Rock')
+        return null;
 
-    // not an object, stringify using native function
-    if (typeof input !== "object" || input instanceof Date || input === null) {
-        return JSON.stringify(input);
-    }
-    // Implements recursive object serialization according to JSON spec
-    // but without quotes around the keys.
-    return `{${Object.entries(input)
-        .map(([key, value]) => `${key}:${weirdStringify(value, Array.isArray(value) ? indent : false)}`)
-        .join(indent ? ",\r\n" : ",")
-        }}`;
-};
+    return (
+        <Modal>
+            <Header><Button onClick={() => setShowEditor(false)}>Close</Button></Header>
+            <CellEditor cell={cell} />
+        </Modal>
+    );
+}
+
+function Toolbar({ selectedCell, setShowEditor }: { selectedCell: Coordinate | undefined, setShowEditor: React.Dispatch<React.SetStateAction<boolean>> }) {
+    const setGame = useContext(GameSetterContext);
+
+    const undoCtx = useContext(UndoContext);
+    const doUndo = useMemo(() => undoCtx.undo.bind(undoCtx), [undoCtx]);
+    const doRedo = useMemo(() => undoCtx.redo.bind(undoCtx), [undoCtx]);
+
+    const replaceCell = (newType: GameCell["type"]) => {
+        if (!selectedCell)
+            return;
+
+        setGame(game => {
+            if (!game)
+                return game;
+
+            const cell = game.getCellAtCoordinate(selectedCell);
+            if (!cell)
+                return game;
+
+            switch (newType) {
+                case 'Empty':
+                case 'Rock':
+                    return game.replaceCell(cell, { type: newType });
+                case 'Source':
+                case 'Target':
+                    return game.replaceCell(cell, { type: newType, direction: "top", trains: [] });
+                case 'Splitter':
+                    return game.replaceCell(cell, { type: newType, direction: "top" });
+                case 'Paint':
+                    return game.replaceCell(cell, { type: newType, direction: "top-right", color: "Yellow" });
+            }
+            return game;
+        });
+    };
+
+    return (
+        <Footer className={styles.editor}>
+            <ButtonColumn>
+                <Button disabled={!undoCtx.canUndo} onClick={doUndo}>Undo</Button>
+                <Button disabled={!undoCtx.canRedo} onClick={doRedo}>Redo</Button>
+            </ButtonColumn>
+            <ButtonColumn>
+                <Button onClick={() => replaceCell('Empty')} className={styles.emptyIcon} title="Empty tile">❌</Button>
+                <Button onClick={() => replaceCell('Rock')} className={styles.icon}><RockSvg /></Button>
+            </ButtonColumn>
+            <ButtonColumn>
+                <Button onClick={() => replaceCell('Source')} className={styles.icon}><SourceCell cell={{ type: "Source", trains: [], direction: "top" }} /></Button>
+                <Button onClick={() => replaceCell('Target')} className={styles.icon}><TargetCell cell={{ type: "Target", trains: [], direction: "top" }} /></Button>
+            </ButtonColumn>
+            <ButtonColumn>
+                <Button onClick={() => replaceCell('Paint')} className={styles.icon}><PaintCell cell={{ type: "Paint", color: "Yellow", direction: "vertical" }} /></Button>
+                <Button onClick={() => replaceCell('Splitter')} className={styles.icon}><SplitterCell cell={{ type: "Splitter", direction: "top" }} /></Button>
+            </ButtonColumn>
+            <ButtonColumn>
+                <Button onClick={() => setShowEditor(current => !current)}>Edit<br />Piece</Button>
+            </ButtonColumn>
+        </Footer>
+    );
+}
 
 export default function LevelEditor() {
     const game = useContext(GameContext);
-    const setGame = useContext(GameSetterContext);
     const [selectedCell, setSelectedCell] = useState<Coordinate>();
+    const [showEditor, setShowEditor] = useState(false);
 
     const onCellEvent = useCallback((e: CellEvent) => {
         if (e.type === "click") {
@@ -319,84 +369,14 @@ export default function LevelEditor() {
         };
     }, [game, setSelectedCell]);
 
-    const replaceCell = (newType: GameCell["type"]) => {
-        if (!selectedCell)
-            return;
-        const cell = game.getCellAtCoordinate(selectedCell);
-        if (!cell)
-            return;
-
-        let newGame: Game | undefined;
-        switch (newType) {
-            case 'Empty':
-            case 'Rock':
-                newGame = game.replaceCell(cell, { type: newType });
-                break;
-
-            case 'Source':
-            case 'Target':
-                newGame = game.replaceCell(cell, { type: newType, direction: "top", trains: [] });
-                break;
-
-            case 'Splitter':
-                newGame = game.replaceCell(cell, { type: newType, direction: "top" });
-                break;
-
-            case 'Paint':
-                newGame = game.replaceCell(cell, { type: newType, direction: "top-right", color: "Yellow" });
-                break;
-        }
-
-        if (newGame) {
-            setGame(newGame);
-        }
-    };
-
-    const copyJson = () => {
-        const level = findLevelByName(game.level);
-        if (!level)
-            return;
-
-        const grid: (GameCell & Coordinate)[] = [];
-        game.grid.forEach((row, rowIndex) => {
-            row.forEach((cell, colIndex) => {
-                if (cell.type !== "Empty") {
-                    grid.push({ ...cell, row: rowIndex, col: colIndex });
-                }
-            });
-        });
-
-        const definition: Puzzle = {
-            ...level,
-            cells: grid
-        };
-
-        navigator.clipboard.writeText(weirdStringify(definition, true));
-    };
-
     return (
         <BuildContext.Provider value={onCellEvent}>
             <SelectedCellContext.Provider value={selectedCell}>
                 <Canvas />
 
-                <Footer className={styles.editor}>
-                    <ButtonColumn>
-                        <Button onClick={() => replaceCell('Empty')}>Empty</Button>
-                        <Button onClick={() => replaceCell('Rock')}>Rock</Button>
-                    </ButtonColumn>
-                    <ButtonColumn>
-                        <Button onClick={() => replaceCell('Source')}>Source</Button>
-                        <Button onClick={() => replaceCell('Target')}>Target</Button>
-                    </ButtonColumn>
-                    <ButtonColumn>
-                        <Button onClick={() => replaceCell('Paint')}>Paint</Button>
-                        <Button onClick={() => replaceCell('Splitter')}>Splitter</Button>
-                    </ButtonColumn>
-                </Footer>
+                <Toolbar selectedCell={selectedCell} setShowEditor={setShowEditor} />
 
-                <Button onClick={copyJson}>Copy JSON</Button>
-
-                <CellEditor />
+                {showEditor && <CellEditorDialog setShowEditor={setShowEditor} />}
             </SelectedCellContext.Provider>
         </BuildContext.Provider>
     );

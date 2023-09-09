@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Button.module.scss";
 
 type ButtonProps = {
-    buttonColor?: "default" | "green" | "yellow" | "red" | "blue";
+    buttonColor?: "default" | "green" | "yellow" | "red" | "blue" | "purple";
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export default function Button({ children, className, buttonColor, ...props }: ButtonProps) {

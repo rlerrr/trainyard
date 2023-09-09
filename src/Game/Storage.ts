@@ -1,4 +1,5 @@
-import { Coordinate, Game, GameRunState, GameState, IntersectionGameCell, TrackGameCell } from "./Game";
+import { useCallback, useState } from "react";
+import { Coordinate, Game, GameCell, GameRunState, GameState, IntersectionGameCell, TrackGameCell } from "./Game";
 import { buildGame, findLevelByName, Puzzle, puzzleGroups } from "./Levels";
 
 export type SerializedCell = TrackGameCell | IntersectionGameCell;
@@ -54,7 +55,8 @@ export function saveSolution(game: Game, gameState: GameState) {
 
     const level = findLevelByName(game.level);
     if (!level) {
-        //Very weird but also no
+        //Must be a custom level
+        saveCustomPuzzle(game);
         return;
     }
 
@@ -68,4 +70,61 @@ export function saveSolution(game: Game, gameState: GameState) {
     }
 
     localStorage.setItem(`solutions-${game.level}`, JSON.stringify(state));
+}
+
+export function usePuzzleState(): [Puzzle[], React.Dispatch<React.SetStateAction<Puzzle[]>>] {
+    const getPuzzles = (): Puzzle[] => {
+        const value = localStorage.getItem('my-trainyard-puzzles');
+        if (value === null || value === '')
+            return [];
+
+        return JSON.parse(value);
+    };
+
+    const [puzzles, setPuzzles] = useState<Puzzle[]>(getPuzzles);
+    const setPuzzlesStored = useCallback<React.Dispatch<React.SetStateAction<Puzzle[]>>>((value) => {
+        if (typeof value === 'function') {
+            setPuzzles((prevValue) => {
+                const newValue = value(prevValue);
+                localStorage.setItem('my-trainyard-puzzles', JSON.stringify(newValue));
+                return newValue;
+            });
+        } else {
+            localStorage.setItem('my-trainyard-puzzles', JSON.stringify(value));
+            setPuzzles(value);
+        }
+    }, [setPuzzles]);
+    return [puzzles, setPuzzlesStored];
+}
+
+function saveCustomPuzzle(game: Game): void {
+    const value = localStorage.getItem('my-trainyard-puzzles');
+    if (value === null || value === '')
+        return;
+
+    const puzzles: Puzzle[] = JSON.parse(value);
+    if (!Array.isArray(puzzles))
+        return;
+
+    const target = puzzles.findIndex(p => p.name === game.level);
+    if (target < 0)
+        return;
+
+    const cells = gameToCellDefinitions(game);
+
+    const newPuzzle: Puzzle = { ...puzzles[target], cells };
+    puzzles.splice(target, 1, newPuzzle);
+    localStorage.setItem('my-trainyard-puzzles', JSON.stringify(puzzles));
+}
+
+export function gameToCellDefinitions(game: Game): (GameCell & Coordinate)[] {
+    const cells: (GameCell & Coordinate)[] = [];
+    game.grid.forEach((row, rowIndex) => {
+        row.forEach((cell, colIndex) => {
+            if (cell.type !== "Empty") {
+                cells.push({ ...cell, row: rowIndex, col: colIndex });
+            }
+        });
+    });
+    return cells;
 }

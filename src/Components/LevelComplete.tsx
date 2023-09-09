@@ -25,6 +25,11 @@ export default function LevelComplete({ setMode }: { setMode: (value: Mode) => v
         setMode("Build");
     }
 
+    const chooseLevel = () => {
+        setMode(group?.mode || "Engineer"); 
+        setGame(undefined);
+    }
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.completed}>
@@ -32,7 +37,7 @@ export default function LevelComplete({ setMode }: { setMode: (value: Mode) => v
 
                 <div>
                     <Button onClick={() => setMode("Build")} buttonColor="blue">Replay Solution</Button>
-                    <Button onClick={() => setMode("LevelSelect")}>Choose Level</Button>
+                    <Button onClick={chooseLevel}>Choose Level</Button>
                 </div>
 
                 <div>

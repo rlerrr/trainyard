@@ -37,7 +37,11 @@ export type TrackGameCell = {
 
 export type IntersectionGameCell = {
     readonly type: "Intersection";
+
+    /** The bottom track */
     readonly track1: TrackDirection;
+
+    /** The top track */
     readonly track2: TrackDirection;
 }
 
@@ -547,7 +551,8 @@ export class Game {
                     //already the front layer, remove back layer
                     newCell = { type: "Track", direction: cell.track2 };
                 } else {
-                    //TODO: this should replace one of the tracks (but which?)
+                    //move top layer to bottom, and replace top layer
+                    newCell = { ...cell, track1: cell.track2, track2: direction };
                 }
                 break;
             case "Track":

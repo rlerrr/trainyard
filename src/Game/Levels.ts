@@ -1,3 +1,4 @@
+import { Mode } from "../Components/GameSurface";
 import { Coordinate, Game, GameCell } from "./Game";
 
 export type CellDefinition = GameCell & Coordinate;
@@ -10,6 +11,7 @@ export type Puzzle = {
 
 export type PuzzleGroup = {
     readonly name: string;
+    readonly mode: Mode;
     readonly difficulty?: number;
     readonly puzzles: ReadonlyArray<Puzzle>;
 };
@@ -43,6 +45,7 @@ export function findLevelByName(level: string): Puzzle | undefined {
 export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     {
         name: "Abbotsford",
+        mode: "Regular",
         puzzles: [
             {
                 name: "Red Line",
@@ -108,6 +111,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Brampton",
+        mode: "Regular",
         difficulty: 6,
         puzzles: [
             {
@@ -194,6 +198,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Calgary",
+        mode: "Regular",
         difficulty: 11,
         puzzles: [
             {
@@ -280,6 +285,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Delson",
+        mode: "Regular",
         difficulty: 20,
         puzzles: [
             {
@@ -392,6 +398,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Edmonton",
+        mode: "Regular",
         difficulty: 35,
         puzzles: [
             {
@@ -483,6 +490,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Fredericton",
+        mode: "Regular",
         difficulty: 62,
         puzzles: [
             {
@@ -578,6 +586,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Guelph",
+        mode: "Regular",
         difficulty: 71,
         puzzles: [
             {
@@ -719,6 +728,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Halifax",
+        mode: "Regular",
         difficulty: 96,
         puzzles: [
             {
@@ -833,6 +843,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Iqaluit",
+        mode: "Regular",
         difficulty: 134,
         puzzles: [
             {
@@ -948,6 +959,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     {
         //Start of Paint tiles
         name: "Joliette",
+        mode: "Regular",
         difficulty: 171,
         puzzles: [
             {
@@ -1033,6 +1045,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Kamloops",
+        mode: "Regular",
         difficulty: 190,
         puzzles: [
             {
@@ -1158,6 +1171,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     {
         //Start of splitter tiles
         name: "London",
+        mode: "Regular",
         difficulty: 235,
         puzzles: [
             {
@@ -1273,6 +1287,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Mississauga",
+        mode: "Regular",
         difficulty: 291,
         puzzles: [
             {
@@ -1389,6 +1404,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Niagara Falls",
+        mode: "Regular",
         difficulty: 375,
         puzzles: [
             {
@@ -1549,6 +1565,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     //Bonus puzzles
     {
         name: "Oakville",
+        mode: "Bonus",
         difficulty: 425,
         puzzles: [
             {
@@ -1722,6 +1739,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Peterborough",
+        mode: "Bonus",
         difficulty: 425,
         puzzles: [
             {
@@ -1886,6 +1904,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Quebec City",
+        mode: "Bonus",
         difficulty: 425,
         puzzles: [
             {
@@ -2036,6 +2055,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Regina",
+        mode: "Bonus",
         difficulty: 425,
         puzzles: [
             {
@@ -2184,6 +2204,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "St. John's",
+        mode: "Bonus",
         difficulty: 425,
         puzzles: [
             {
@@ -2291,6 +2312,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Toronto",
+        mode: "Bonus",
         difficulty: 425,
         puzzles: [
             {
@@ -2409,6 +2431,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Uxbridge",
+        mode: "Bonus",
         difficulty: 425,
         puzzles: [
             {
@@ -2537,6 +2560,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Vancouver",
+        mode: "Bonus",
         difficulty: 425,
         puzzles: [
             {
@@ -2632,6 +2656,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Whitehorse",
+        mode: "Bonus",
         difficulty: 425,
         puzzles: [
             {
@@ -2710,7 +2735,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     //Featured puzzles
     {
         name: "Port Credit",
-        difficulty: 500,
+        mode: "Featured",
         puzzles: [
             {
                 name: "Treedom",
@@ -2840,7 +2865,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Lorne Park",
-        difficulty: 500,
+        mode: "Featured",
         puzzles: [
             {
                 name: "Rookie Engineer",
@@ -2959,7 +2984,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Cooksville",
-        difficulty: 500,
+        mode: "Featured",
         puzzles: [
             {
                 name: "Re-color",
@@ -3064,7 +3089,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
                     { type: "Source", direction: "left", trains: ["Brown"], row: 0, col: 6 },
                     { type: "Splitter", direction: "right", row: 1, col: 0 },
                     { type: "Rock", row: 2, col: 1 },
-                    { type: "Target", direction: "top", trains: ["Yellow", "Yellow", "Blue", "Blue", "Purple"], row: 2, col: 2 },
+                    { type: "Target", direction: "bottom", trains: ["Yellow", "Yellow", "Blue", "Blue", "Purple"], row: 2, col: 2 },
                     { type: "Rock", row: 2, col: 3 },
                     { type: "Rock", row: 3, col: 3 },
                     { type: "Paint", direction: "horizontal", color: "Purple", row: 4, col: 3 },
@@ -3090,7 +3115,7 @@ export const puzzleGroups: ReadonlyArray<PuzzleGroup> = [
     },
     {
         name: "Erindale",
-        difficulty: 500,
+        mode: "Featured",
         puzzles: [
             {
                 //The only puzzle with a duplicate name

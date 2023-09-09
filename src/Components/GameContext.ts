@@ -15,7 +15,7 @@ type CellMouseThroughEvent = {
 };
 
 type CellClickEvent = {
-    type: "click";
+    type: "click" | "dblclick";
     cell: GameCell;
 }
 

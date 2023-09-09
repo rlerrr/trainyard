@@ -3,6 +3,7 @@
 }
 
 @keyframes oscillate-shadow {
+
     0%,
     100% {
         box-shadow: 0 0 5px grey;
@@ -10,5 +11,61 @@
 
     50% {
         box-shadow: 0 0 20px yellow;
+    }
+}
+
+.menuButtons {
+    opacity: .90;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 1000;
+
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    button {
+        flex: 1;
+
+        min-width: 0;
+    }
+
+    >* {
+        align-items: stretch;
+    }
+}
+
+.titleBar {
+    color: white;
+    font-family: 'Neuton', serif;
+    line-height: 1;
+    font-weight: 200;
+    text-shadow: 1px 0 4px rgba(255,255,255, 0.5), 1px 1px 2px black;
+    text-transform: uppercase;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 12px 0;
+
+    .title {
+        font-size: 48px;
+        letter-spacing: .8rem;
+
+        //idk why this is needed to get visual centering?
+        margin-right: -.6rem;
+    }
+
+    .subTitle {
+        font-size: 24px;
+        letter-spacing: .25rem;
     }
 }

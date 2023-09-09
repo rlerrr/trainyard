@@ -1,20 +1,23 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { Game, GameState } from '../Game/Game';
-import { findLevelByName } from '../Game/Levels';
+import { clearLine } from 'readline';
+import { Game, GameCell, GameState } from '../Game/Game';
+import { findLevelByName, puzzleGroups } from '../Game/Levels';
 import { saveSolution } from '../Game/Storage';
 import { Undo, UndoContext, UndoState } from '../Game/Undo';
 import Button, { ButtonColumn } from './Button';
 import Canvas from './Canvas';
-import Dialog, { Footer, Header } from './Dialog';
+import DemoGame from './DemoGame';
+import Dialog, { Footer, Header, Row } from './Dialog';
 import GameContext, { BuildContext, CellEvent, defaultGame, defaultGameState, GameSetterContext, GameStateContext } from './GameContext';
 import styles from './GameSurface.module.scss';
 import LevelComplete from './LevelComplete';
 import LevelEditor from './LevelEditor';
-import LevelSelect from './LevelSelect';
+import LevelSelect, { getTotalPoints } from './LevelSelect';
+import MyPuzzles from './MyPuzzles';
 import { Speed } from './Speed';
 import Status from './Status';
 
-export type Mode = "Build" | "Erase" | "Run" | "Complete" | "LevelSelect" | "Editor";
+export type Mode = "Menu" | "Regular" | "Bonus" | "Featured" | "Engineer" | "Build" | "Erase" | "Run" | "Complete" | "Editor";
 
 function GameCanvas({ mode, setMode }: { mode: Mode, setMode: (value: Mode) => void }) {
     const game = useContext(GameContext);
@@ -81,6 +84,15 @@ function BuildMode({ setMode }: { setMode: (value: Mode) => void }) {
                 const newGame = game?.drawTrack(e.cell, e.enterEdge, e.exitEdge);
                 return newGame ?? game;
             });
+        } else if (e.type === "dblclick") {
+            //Flip intersections
+            const { cell } = e;
+            if (cell.type === "Intersection") {
+                setGame(game => {
+                    const newGame = game?.replaceCell(cell, { ...cell, track1: cell.track2, track2: cell.track1 });
+                    return newGame ?? game;
+                });
+            }
         }
     }, [setGame]);
 
@@ -197,36 +209,80 @@ function UndoContextProvider({ children, setGame }: { children: React.ReactNode,
     );
 }
 
+function MainMenu({ setMode }: { setMode: (value: Mode) => void }) {
+    const points = useMemo(() => getTotalPoints(), []);
+    return (
+        <Dialog>
+            <div className={styles.titleBar}>
+                <div className={styles.title}>Trainyard</div>
+                <div className={styles.subTitle}>A puzzle solving game</div>
+            </div>
+
+            <DemoGame />
+
+            <div className={styles.menuButtons}>
+                <Row>
+                    <Button buttonColor="green" onClick={() => setMode("Regular")}>Start</Button>
+                    <Button buttonColor="blue" onClick={() => setMode("Bonus")} disabled={points < 425}>Bonus<br />Puzzles</Button>
+                </Row>
+                <Row>
+                    <Button buttonColor="purple" onClick={() => setMode("Featured")} disabled={points < 200}>Featured<br />Puzzles</Button>
+                    <Button buttonColor="yellow" onClick={() => setMode("Engineer")}>My Puzzles</Button>
+                </Row>
+            </div>
+        </Dialog>
+    )
+}
+
+function GameContents({ mode, setMode }: { mode: Mode, setMode: React.Dispatch<React.SetStateAction<Mode>> }) {
+    const game = useContext(GameContext);
+    const setGame = useContext(GameSetterContext);
+    const [group, setGroup] = useState<string>();
+    const level = useMemo(() => game?.level ? findLevelByName(game.level) : undefined, [game?.level]);
+    const groups = useMemo(() => puzzleGroups.filter(g => g.mode === mode), [mode]);
+
+    if (mode === "Engineer") {
+        return <MyPuzzles setMode={setMode} />;
+    }
+
+    if (game === undefined || mode === "Regular" || mode === "Bonus" || mode === "Featured") {
+        return <LevelSelect setMode={setMode} group={group} groups={groups} setGroup={setGroup} />;
+    }
+
+    const goBack = () => {
+        setGame(undefined);
+        const selectedGroup = puzzleGroups.find(g => g.name === group);
+        setMode(selectedGroup ? selectedGroup.mode : "Engineer");
+    };
+
+    return (
+        <>
+            <Header>
+                <Button onClick={goBack}>&#xab; Back</Button>
+
+                <h1>{game.level} {level?.difficulty}&#x2605;</h1>
+            </Header>
+
+            <GameCanvas mode={mode} setMode={setMode} />
+
+            {mode === "Complete" && <LevelComplete setMode={setMode} />}
+        </>
+    );
+}
+
 export default function GameSurface() {
     const [game, setGame] = useState<Game>();
-    const level = useMemo(() => game?.level ? findLevelByName(game.level) : undefined, [game?.level]);
-    const [mode, setMode] = useState<Mode>("Build");
+    const [mode, setMode] = useState<Mode>("Menu");
 
-    if (mode === "LevelSelect" || game === undefined || level === undefined) {
-        return (
-            <GameContext.Provider value={game ?? defaultGame}>
-                <UndoContextProvider setGame={setGame}>
-                    <Dialog>
-                        <LevelSelect setMode={setMode} />
-                    </Dialog>
-                </UndoContextProvider>
-            </GameContext.Provider>
-        );
+    if (mode === "Menu") {
+        return <MainMenu setMode={setMode} />;
     }
 
     return (
-        <GameContext.Provider value={game}>
+        <GameContext.Provider value={game ?? defaultGame}>
             <UndoContextProvider setGame={setGame}>
                 <Dialog>
-                    <Header>
-                        <Button onClick={() => setMode("LevelSelect")}>&#xab; Back</Button>
-
-                        <h1>{game.level} {level.difficulty}&#x2605;</h1>
-                    </Header>
-
-                    <GameCanvas mode={mode} setMode={setMode} />
-
-                    {mode === "Complete" && <LevelComplete setMode={setMode} />}
+                    <GameContents mode={mode} setMode={setMode} />
                 </Dialog>
             </UndoContextProvider>
         </GameContext.Provider>
